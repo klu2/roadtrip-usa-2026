@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 import Lightbox from "@/components/Lightbox";
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Lightbox />
+        <Analytics />
       </body>
     </html>
   );
