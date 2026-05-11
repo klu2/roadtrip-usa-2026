@@ -36,6 +36,16 @@ export const tripNight = (iso: string, startIso: string): number => {
   return Math.round((d - start) / MS_PER_DAY) + 1;
 };
 
+// 1-based trip day index — same math as tripNight, named for the "Tag N" UI.
+export const tripDay = tripNight;
+
+// Number of nights between checkIn and checkOut (1 if same calendar day stay).
+export const nightsCount = (checkIn: string, checkOut: string): number => {
+  const a = new Date(checkIn + "T12:00:00").getTime();
+  const b = new Date(checkOut + "T12:00:00").getTime();
+  return Math.max(1, Math.round((b - a) / MS_PER_DAY));
+};
+
 // Badge text for a stay: "5" for one night, "1-4" for a range.
 // `checkOut` is the morning of departure → last slept night is checkOut - 1.
 export const stayBadge = (

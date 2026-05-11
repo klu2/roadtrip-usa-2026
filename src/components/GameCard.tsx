@@ -1,5 +1,4 @@
 import type { Game } from "@/data/trip.types";
-import { fmtDate } from "@/lib/format";
 
 interface Props {
   game: Game;
@@ -8,9 +7,12 @@ interface Props {
 
 export default function GameCard({ game, index }: Props) {
   const isAustriaHome = game.home === "Österreich";
-  const d = fmtDate(game.date);
   return (
-    <article className={"game-card" + (game.stadiumPhoto ? " has-stadium-photo" : "")}>
+    <article
+      className={
+        "game-card" + (game.stadiumPhoto ? " has-stadium-photo" : "")
+      }
+    >
       <div className="ribbon">{`Spiel ${index + 1} · Gruppe J`}</div>
       {game.stadiumPhoto ? (
         <div className="stadium-photo">
@@ -30,13 +32,7 @@ export default function GameCard({ game, index }: Props) {
         </div>
       </div>
       <div className="game-meta">
-        <div>
-          <div className="k">Datum</div>
-          <div className="v">
-            {d.weekday}, {d.day} {d.month}
-          </div>
-        </div>
-        <div>
+        <div className="full-row">
           <div className="k">Anpfiff (lokal · Wien)</div>
           <div className="v">
             {game.kickoff} · {game.kickoffVie || "—"}

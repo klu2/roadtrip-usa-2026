@@ -1,31 +1,34 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import type { Map as LeafletMap, LayerGroup } from "leaflet";
+import { useEffect, useRef } from "react";
+import type { Map as LeafletMap } from "leaflet";
 import { TRIP } from "@/data/trip";
 import { fmtDate, stayBadge } from "@/lib/format";
 
 const BALL_SVG = `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#181513" stroke-width="1.5"/><polygon points="16,8 21,11.6 19,17.5 13,17.5 11,11.6" fill="#181513"/><path d="M16 1 L16 8 M1 16 L11 11.6 M31 16 L21 11.6 M6 26 L13 17.5 M26 26 L19 17.5" stroke="#181513" stroke-width="1.2" fill="none"/></svg>`;
 
-export default function TripMap() {
+interface Props {
+  /** When true, scroll wheel zooms the map (use on dedicated map page). */
+  interactive?: boolean;
+  /** Class for the host div. Defaults to `map-host`. */
+  className?: string;
+}
+
+export default function TripMap({ interactive = false, className }: Props) {
   const hostRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
-  const layerRef = useRef<LayerGroup | null>(null);
-  const [full, setFull] = useState(false);
 
-  // Init map once
   useEffect(() => {
     if (!hostRef.current || mapRef.current) return;
     let cancelled = false;
 
     (async () => {
       const L = (await import("leaflet")).default;
-      // CSS is loaded via global import in layout.tsx
       if (cancelled || !hostRef.current) return;
 
       const map = L.map(hostRef.current, {
         zoomControl: true,
-        scrollWheelZoom: false,
+        scrollWheelZoom: interactive,
         attributionControl: true,
       });
       mapRef.current = map;
@@ -39,9 +42,6 @@ export default function TripMap() {
           maxZoom: 18,
         }
       ).addTo(map);
-
-      const layer = L.layerGroup().addTo(map);
-      layerRef.current = layer;
 
       // Build chronological stops
       const stops: { coords: [number, number]; date: string }[] = [];
@@ -62,13 +62,12 @@ export default function TripMap() {
           dashArray: "6 6",
           lineCap: "round",
           lineJoin: "round",
-        }).addTo(layer);
+        }).addTo(map);
       }
 
       // Hotel markers — badge shows trip-night number(s), e.g. "1-4" or "6"
       TRIP.hotels.forEach((h) => {
         const badge = stayBadge(h.checkIn, h.checkOut, TRIP.meta.start);
-        // Width grows with text length; iconAnchor must be horizontally centred.
         const approxWidth = Math.max(26, 12 + badge.length * 7);
         const icon = L.divIcon({
           className: "hotel-pin",
@@ -79,7 +78,7 @@ export default function TripMap() {
         const ci = fmtDate(h.checkIn);
         const co = fmtDate(h.checkOut);
         L.marker(h.coords, { icon })
-          .addTo(layer)
+          .addTo(map)
           .bindPopup(
             `<div class="pop-title">Nacht ${badge} · ${h.city.split(",")[0]}</div>` +
               `<div class="pop-sub">${ci.day} ${ci.month} – ${co.day} ${co.month}</div>` +
@@ -97,7 +96,7 @@ export default function TripMap() {
         });
         const d = fmtDate(g.date);
         L.marker(g.coords, { icon })
-          .addTo(layer)
+          .addTo(map)
           .bindPopup(
             `<div class="pop-title">${g.home} vs ${g.away}</div>` +
               `<div class="pop-sub">${d.weekday}, ${d.day} ${d.month} · ${g.kickoff}</div>` +
@@ -117,41 +116,9 @@ export default function TripMap() {
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
-        layerRef.current = null;
       }
     };
-  }, []);
+  }, [interactive]);
 
-  // Re-size map when fullscreen toggles
-  useEffect(() => {
-    document.body.classList.toggle("map-full-active", full);
-    const id = window.setTimeout(() => {
-      mapRef.current?.invalidateSize();
-    }, 50);
-    return () => window.clearTimeout(id);
-  }, [full]);
-
-  // ESC to exit fullscreen
-  useEffect(() => {
-    if (!full) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setFull(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [full]);
-
-  return (
-    <div className="map-frame">
-      <div ref={hostRef} className={"map-host" + (full ? " full" : "")} />
-      <button
-        type="button"
-        onClick={() => setFull((v) => !v)}
-        className={"map-fullscreen-btn" + (full ? " full" : "")}
-        aria-label={full ? "Vollbild verlassen" : "Karte im Vollbild"}
-      >
-        {full ? "Schließen ✕" : "Vollbild ⤢"}
-      </button>
-    </div>
-  );
+  return <div ref={hostRef} className={className || "map-host"} />;
 }

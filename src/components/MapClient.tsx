@@ -7,6 +7,11 @@ const TripMap = dynamic(() => import("./Map"), {
   loading: () => <div className="map-host" />,
 });
 
-export default function MapClient() {
-  return <TripMap />;
+interface Props {
+  interactive?: boolean;
+  className?: string;
+}
+
+export default function MapClient(props: Props) {
+  return <TripMap {...props} />;
 }

@@ -183,25 +183,62 @@ section { padding: 26px 0 12px; }
 }
 .map-fullscreen-btn:active { transform: translateY(1px); }
 
-body.map-full-active { overflow: hidden; }
-.map-host.full {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+.map-host.fill {
+  width: 100%;
+  height: 100%;
   border-radius: 0;
-  z-index: 9000;
-  background: #f1ece4;
 }
-.map-host.full .leaflet-container { width: 100%; height: 100%; }
-.map-host.full + .map-fullscreen-btn,
-.map-fullscreen-btn.full {
-  position: fixed;
-  top: max(12px, env(safe-area-inset-top));
-  right: max(12px, env(safe-area-inset-right));
-  z-index: 9100;
+.map-host.fill .leaflet-container { width: 100%; height: 100%; }
+
+/* Dedicated /karte page */
+.karte-page {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100%;
+  background: var(--weiss);
+  overflow: hidden;
 }
+.karte-header {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  padding-top: max(12px, env(safe-area-inset-top));
+  background: var(--paper);
+  border-bottom: 1.5px solid var(--ink);
+}
+.karte-back {
+  justify-self: start;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: var(--weiss);
+}
+.karte-back:active { transform: translateY(1px); }
+.karte-title {
+  justify-self: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.karte-spacer { justify-self: end; }
+.karte-map {
+  flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+}
+.karte-map .map-host { height: 100%; }
 
 /* Custom Leaflet markers */
 .game-pin {
@@ -273,68 +310,55 @@ body.map-full-active { overflow: hidden; }
   background: var(--ink);
 }
 
-/* ---------- Stadium photo on game card ---------- */
-.stadium-photo {
-  margin: 0 -16px 0;
-  height: 180px;
+/* ---------- Inline game card (inside day-block) ---------- */
+.game-card {
+  position: relative;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin: 4px 0 2px;
+}
+.game-card .ribbon {
+  position: absolute; top: 0; left: 14px;
+  background: var(--rot); color: white;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
+  padding: 4px 9px; border-radius: 0 0 4px 4px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.game-card .stadium-photo {
+  height: 200px;
   overflow: hidden;
   background: repeating-linear-gradient(135deg, var(--ink-08) 0 8px, transparent 8px 16px);
   position: relative;
 }
-.stadium-photo img {
+.game-card .stadium-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
 }
-.game-card.has-stadium-photo {
-  padding-top: 0;
-}
-.game-card.has-stadium-photo .ribbon {
-  z-index: 2;
-  top: 0;
-}
-
-/* ---------- Game cards ---------- */
-.games-list { display: flex; flex-direction: column; gap: 14px; }
-.game-card {
-  position: relative;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 16px 16px 14px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.game-card::before {
-  content: "";
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(46, 125, 84, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(46, 125, 84, 0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
-  pointer-events: none;
-}
-.game-card .ribbon {
-  position: absolute; top: 0; left: 16px;
-  background: var(--rot); color: white;
-  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
-  padding: 4px 8px; border-radius: 0 0 4px 4px;
-  text-transform: uppercase;
-  z-index: 1;
+@media (min-width: 600px) {
+  .game-card .stadium-photo { height: 260px; }
 }
 .game-card .matchup {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
-  margin-top: 18px;
+  padding: 22px 18px 16px;
   position: relative;
+  background-image:
+    linear-gradient(to right, rgba(46, 125, 84, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(46, 125, 84, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 .game-card .matchup > * { min-width: 0; }
 .game-card .team {
   text-align: center;
   font-family: var(--font-display);
-  font-size: clamp(16px, 4.5vw, 22px);
+  font-size: clamp(18px, 5vw, 24px);
   letter-spacing: -0.01em;
   text-transform: uppercase;
   line-height: 1;
@@ -343,8 +367,8 @@ body.map-full-active { overflow: hidden; }
 }
 .game-card .team.us { color: var(--rot); }
 .game-card .team .crest {
-  width: 44px; height: 44px;
-  margin: 0 auto 8px;
+  width: 52px; height: 52px;
+  margin: 0 auto 10px;
   border-radius: 50%;
   background: var(--weiss);
   border: 1.5px solid var(--ink);
@@ -364,20 +388,20 @@ body.map-full-active { overflow: hidden; }
 
 .game-card .vs {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink-2);
   position: relative;
 }
 .game-card .game-meta {
-  margin-top: 14px;
-  padding-top: 12px;
+  padding: 12px 18px 18px;
   border-top: 1px dashed var(--line);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 14px;
+  gap: 10px 16px;
   font-size: 12px;
   position: relative;
 }
+.game-card .game-meta .full-row { grid-column: 1 / -1; }
 .game-card .game-meta .k {
   font-family: var(--font-mono);
   font-size: 9px;
@@ -387,54 +411,154 @@ body.map-full-active { overflow: hidden; }
 }
 .game-card .game-meta .v {
   font-weight: 600;
-  margin-top: 2px;
+  margin-top: 3px;
+  font-size: 13px;
 }
 
-/* ---------- Itinerary ---------- */
+/* ---------- Itinerary (full-bleed day blocks) ---------- */
+.plan-section { padding: 0; }
 .itinerary { display: flex; flex-direction: column; }
-.day {
+
+.day-block { position: relative; }
+
+.day-header {
+  background: var(--paper);
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  color: var(--ink);
+}
+.day-header-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px 18px;
   display: grid;
-  grid-template-columns: 56px 1fr;
+  grid-template-columns: auto minmax(20px, 1fr) auto;
+  align-items: center;
   gap: 14px;
-  position: relative;
-  padding: 12px 0 12px;
 }
-.day::before {
-  content: "";
-  position: absolute;
-  left: 28px; top: 24px; bottom: -12px;
-  width: 1.5px;
-  background: var(--line);
-}
-.day:last-child::before { display: none; }
-.day .date-chip {
+.day-mark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
   font-family: var(--font-display);
-  background: var(--weiss);
-  border: 1.5px solid var(--ink);
-  border-radius: 10px;
-  padding: 6px 0 4px;
-  text-align: center;
-  height: fit-content;
-  position: relative;
-  z-index: 1;
+  text-transform: uppercase;
   line-height: 1;
 }
-.day .date-chip .day-num { font-size: 22px; }
-.day .date-chip .month {
+.day-mark .tag {
   font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.16em;
-  margin-top: 2px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   color: var(--ink-2);
+  font-weight: 500;
+}
+.day-mark .num {
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+.day-rule {
+  height: 1.5px;
+  background: var(--ink-15);
+  align-self: center;
+}
+.day-date {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  background: var(--weiss);
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  padding: 5px 10px 6px;
+  min-width: 44px;
+  color: var(--ink);
+}
+.day-date .weekday {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 3px;
 }
-.day.match-day .date-chip {
+.day-date .day-num {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.ball-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  color: currentColor;
+  flex-shrink: 0;
+}
+.ball-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  color: currentColor;
+  flex-shrink: 0;
+}
+
+.day-header.match {
   background: var(--rot);
+  border-top-color: var(--rot-deep);
+  border-bottom-color: var(--rot-deep);
   color: white;
-  border-color: var(--rot-deep);
 }
-.day.match-day .date-chip .month { color: rgba(255, 255, 255, 0.85); }
-.day .events { padding-top: 2px; display: flex; flex-direction: column; gap: 8px; }
+.day-header.match .tag { color: rgba(255, 255, 255, 0.85); }
+.day-header.match .num { color: white; }
+.day-header.match .day-rule { background: rgba(255, 255, 255, 0.4); }
+.day-header.match .day-date {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.85);
+  color: white;
+}
+.day-header.match .day-date .weekday { color: rgba(255, 255, 255, 0.85); }
+
+.day-body {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 18px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.day-separator {
+  margin: 0;
+}
+
+.day-tag-row {
+  margin-top: 2px;
+}
+.day-tag-chip {
+  display: inline-block;
+  background: var(--weiss);
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+@media (max-width: 380px) {
+  .day-header-inner {
+    padding: 14px 14px;
+    gap: 10px;
+  }
+  .day-mark .num { font-size: 26px; }
+  .day-date { padding: 4px 8px 5px; min-width: 40px; }
+  .day-date .day-num { font-size: 20px; }
+  .day-date .weekday { font-size: 9px; }
+  .day-body { padding: 14px 14px 20px; }
+}
+
 .event {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -473,21 +597,21 @@ body.map-full-active { overflow: hidden; }
   letter-spacing: 0.02em;
 }
 
-/* Hotel stay block */
+/* Hotel stay block (inline in day-body) */
 .stay-block {
   display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 14px;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
   align-items: stretch;
-  margin-top: 10px;
-  padding: 10px;
+  margin: 4px 0 2px;
+  padding: 12px;
   background: var(--paper-2);
   border: 1px solid var(--ink-15);
-  border-radius: 4px;
+  border-radius: 10px;
 }
 .stay-photo {
-  width: 96px; height: 96px;
-  border-radius: 3px;
+  width: 140px; height: 140px;
+  border-radius: 6px;
   overflow: hidden;
   background: var(--ink-08);
   position: relative;
@@ -511,35 +635,56 @@ body.map-full-active { overflow: hidden; }
   min-width: 0;
 }
 .stay-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.14em;
   color: var(--ink-50);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+}
+.stay-badge {
+  display: inline-block;
+  background: var(--rot);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
 }
 .stay-name {
   font-family: var(--font-display);
-  font-size: 16px;
-  line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.18;
   letter-spacing: -0.01em;
   word-break: break-word;
+  text-transform: uppercase;
 }
 .stay-meta {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--ink-70);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 .stay-link {
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 8px;
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--rot);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
   width: max-content;
+}
+
+@media (max-width: 380px) {
+  .stay-block { grid-template-columns: 100px 1fr; gap: 12px; padding: 10px; }
+  .stay-photo { width: 100px; height: 100px; }
+  .stay-name { font-size: 16px; }
 }
 
 /* ---------- Lightbox ---------- */

@@ -1,5 +1,5 @@
+import Link from "next/link";
 import MapClient from "@/components/MapClient";
-import GameCard from "@/components/GameCard";
 import Itinerary from "@/components/Itinerary";
 import { TRIP } from "@/data/trip";
 import { fmtDate } from "@/lib/format";
@@ -47,12 +47,23 @@ export default function Home() {
               <div className="num">01 / Die Route</div>
               <h2>Quer durch die USA</h2>
               <div className="lede">
-                Von der Bay nach Texas nach Kansas City — drei Spiele, sechs Etappen.
+                Von der Bay nach Texas nach Kansas City — drei Spiele, sechs
+                Etappen.
               </div>
             </div>
           </div>
           <div className="map-card">
-            <MapClient />
+            <div className="map-frame">
+              <MapClient />
+              <Link
+                href="/karte"
+                className="map-fullscreen-btn"
+                prefetch
+                aria-label="Karte vergrößern"
+              >
+                Vergrößern ↗
+              </Link>
+            </div>
             <div className="legend">
               <div className="item">
                 <span className="sw" />
@@ -69,39 +80,13 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <div className="flag-bands thin" style={{ margin: "24px 0 8px" }} />
-
-        <section id="games">
-          <div className="section-head">
-            <div>
-              <div className="num">02 / Die Spiele</div>
-              <h2>Drei Spiele</h2>
-              <div className="lede">
-                Gruppe J: Argentinien, Algerien, Österreich, Jordanien.
-              </div>
-            </div>
-          </div>
-          <div className="games-list">
-            {TRIP.games.map((g, i) => (
-              <GameCard key={g.id} game={g} index={i} />
-            ))}
-          </div>
-        </section>
-
-        <section id="plan">
-          <div className="section-head">
-            <div>
-              <div className="num">03 / Tag für Tag</div>
-              <h2>Der Plan</h2>
-              <div className="lede">
-                Flüge, Fahrten, Hotels, Anpfiffe. Später kommen Fotos und Schmäh dazu.
-              </div>
-            </div>
-          </div>
-          <Itinerary />
-        </section>
       </div>
+
+      <div className="flag-bands" />
+
+      <section id="plan" className="plan-section">
+        <Itinerary />
+      </section>
 
       <footer className="foot">
         <span>4 Mann</span>
