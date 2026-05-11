@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(mkdir -p \"C:/coding/github/klu2/roadtrip-usa-2026/.design-extract\")",
+      "Bash(tar -xzf \"C:/Users/KlausLehner/.claude/projects/C--coding-github-klu2-roadtrip-usa-2026/a654db3b-451b-4a6f-bf35-fdfb19c9af06/tool-results/webfetch-1778521073819-abkzw7.bin\")",
+      "Bash(npm install *)",
+      "Bash(npx next *)",
+      "WebFetch(domain:en.wikipedia.org)"
+    ]
+  }
+}

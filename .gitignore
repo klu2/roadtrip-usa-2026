@@ -1,0 +1,10 @@
+node_modules/
+.next/
+.design-extract/
+.env*
+*.log
+.DS_Store
+out/
+build/
+dist/
+next-env.d.ts
