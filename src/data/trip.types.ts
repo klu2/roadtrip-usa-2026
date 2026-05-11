@@ -37,7 +37,6 @@ export interface Hotel {
   coords: Coords;
   checkIn: string;
   checkOut: string;
-  mapUrl?: string;
   photo?: string;
   notes?: string;
 }

@@ -12,9 +12,11 @@ interface Props {
   interactive?: boolean;
   /** Class for the host div. Defaults to `map-host`. */
   className?: string;
+  /** Hotel or game id to zoom in on and pop open. */
+  focusId?: string;
 }
 
-export default function TripMap({ interactive = false, className }: Props) {
+export default function TripMap({ interactive = false, className, focusId }: Props) {
   const hostRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
 
@@ -32,6 +34,7 @@ export default function TripMap({ interactive = false, className }: Props) {
         attributionControl: true,
       });
       mapRef.current = map;
+      const markers: Record<string, ReturnType<typeof L.marker>> = {};
 
       L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
@@ -77,13 +80,14 @@ export default function TripMap({ interactive = false, className }: Props) {
         });
         const ci = fmtDate(h.checkIn);
         const co = fmtDate(h.checkOut);
-        L.marker(h.coords, { icon })
+        const marker = L.marker(h.coords, { icon })
           .addTo(map)
           .bindPopup(
             `<div class="pop-title">Nacht ${badge} · ${h.city.split(",")[0]}</div>` +
               `<div class="pop-sub">${ci.day} ${ci.month} – ${co.day} ${co.month}</div>` +
               `<div style="margin-top:6px;">${h.name}</div>`
           );
+        markers[h.id] = marker;
       });
 
       // Game markers
@@ -95,19 +99,26 @@ export default function TripMap({ interactive = false, className }: Props) {
           iconAnchor: [15, 15],
         });
         const d = fmtDate(g.date);
-        L.marker(g.coords, { icon })
+        const marker = L.marker(g.coords, { icon })
           .addTo(map)
           .bindPopup(
             `<div class="pop-title">${g.home} vs ${g.away}</div>` +
               `<div class="pop-sub">${d.weekday}, ${d.day} ${d.month} · ${g.kickoff}</div>` +
               `<div style="margin-top:6px;">${g.stadium}<br>${g.city}</div>`
           );
+        markers[g.id] = marker;
       });
 
       if (routeLatLngs.length) {
         map.fitBounds(L.latLngBounds(routeLatLngs), { padding: [30, 30] });
       } else {
         map.setView([39, -98], 4);
+      }
+
+      // Focus a specific marker if requested via ?focus=<id> —
+      // keep the trip-wide fitBounds zoom and just open the popup.
+      if (focusId && markers[focusId]) {
+        markers[focusId].openPopup();
       }
     })();
 
@@ -118,7 +129,7 @@ export default function TripMap({ interactive = false, className }: Props) {
         mapRef.current = null;
       }
     };
-  }, [interactive]);
+  }, [interactive, focusId]);
 
   return <div ref={hostRef} className={className || "map-host"} />;
 }

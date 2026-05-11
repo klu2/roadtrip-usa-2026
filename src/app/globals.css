@@ -345,9 +345,9 @@ section { padding: 26px 0 12px; }
 .game-card .matchup {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: 14px;
+  gap: 8px;
   align-items: center;
-  padding: 22px 18px 16px;
+  padding: 22px 8px 16px;
   position: relative;
   background-image:
     linear-gradient(to right, rgba(46, 125, 84, 0.07) 1px, transparent 1px),
@@ -359,11 +359,10 @@ section { padding: 26px 0 12px; }
   text-align: center;
   font-family: var(--font-display);
   font-size: clamp(18px, 5vw, 24px);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   line-height: 1;
-  word-break: break-word;
-  hyphens: auto;
+  white-space: nowrap;
 }
 .game-card .team.us { color: var(--rot); }
 .game-card .team .crest {
@@ -413,6 +412,10 @@ section { padding: 26px 0 12px; }
   font-weight: 600;
   margin-top: 3px;
   font-size: 13px;
+}
+.game-card .game-card-footer {
+  padding: 0 18px 16px;
+  position: relative;
 }
 
 /* ---------- Itinerary (full-bleed day blocks) ---------- */
@@ -531,22 +534,6 @@ section { padding: 26px 0 12px; }
   margin: 0;
 }
 
-.day-tag-row {
-  margin-top: 2px;
-}
-.day-tag-chip {
-  display: inline-block;
-  background: var(--weiss);
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
 @media (max-width: 380px) {
   .day-header-inner {
     padding: 14px 14px;
@@ -635,9 +622,9 @@ section { padding: 26px 0 12px; }
   min-width: 0;
 }
 .stay-label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.14em;
@@ -645,16 +632,12 @@ section { padding: 26px 0 12px; }
   text-transform: uppercase;
   margin-bottom: 6px;
 }
-.stay-badge {
+.bed-icon {
+  width: 14px;
+  height: 14px;
   display: inline-block;
-  background: var(--rot);
-  color: white;
-  font-family: var(--font-display);
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  padding: 2px 6px;
-  border-radius: 4px;
-  text-transform: uppercase;
+  color: var(--ink-2);
+  flex-shrink: 0;
 }
 .stay-name {
   font-family: var(--font-display);

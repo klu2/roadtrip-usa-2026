@@ -1,18 +1,37 @@
+import Link from "next/link";
 import { TRIP } from "@/data/trip";
 import {
   enumerateDays,
   fmtDate,
   nightsCount,
-  stayBadge,
   tripDay,
 } from "@/lib/format";
 import type { Hotel } from "@/data/trip.types";
 import GameCard from "./GameCard";
 
-const StayBlock = ({ hotel, startIso }: { hotel: Hotel; startIso: string }) => {
+const BedIcon = () => (
+  <svg
+    className="bed-icon"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M3 5 L3 18" />
+    <path d="M3 14 L21 14" />
+    <path d="M3 18 L21 18" />
+    <path d="M21 14 L21 18" />
+    <path d="M5 14 L5 10 L11 10 L11 14" />
+  </svg>
+);
+
+const StayBlock = ({ hotel }: { hotel: Hotel }) => {
   const ci = fmtDate(hotel.checkIn);
   const co = fmtDate(hotel.checkOut);
-  const badge = stayBadge(hotel.checkIn, hotel.checkOut, startIso);
   const nights = nightsCount(hotel.checkIn, hotel.checkOut);
   const nightLabel = nights === 1 ? "1 Nacht" : `${nights} Nächte`;
   return (
@@ -27,26 +46,17 @@ const StayBlock = ({ hotel, startIso }: { hotel: Hotel; startIso: string }) => {
       </div>
       <div className="stay-body">
         <div className="stay-label">
+          <BedIcon />
           <span>Übernachtung</span>
-          <span className="stay-badge" title={`Nacht ${badge} der Reise`}>
-            N {badge}
-          </span>
         </div>
         <div className="stay-name">{hotel.name}</div>
         <div className="stay-meta">
           {hotel.city} · {ci.day}. {ci.monthShort} – {co.day}. {co.monthShort} ·{" "}
           {nightLabel}
         </div>
-        {hotel.mapUrl ? (
-          <a
-            className="stay-link"
-            href={hotel.mapUrl}
-            target="_blank"
-            rel="noopener"
-          >
-            Auf Karte öffnen ↗
-          </a>
-        ) : null}
+        <Link className="stay-link" href={`/karte?focus=${hotel.id}`} prefetch>
+          Auf Karte zeigen →
+        </Link>
       </div>
     </div>
   );
@@ -72,7 +82,6 @@ export default function Itinerary() {
         const activeHotel = TRIP.hotels.find(
           (h) => h.checkIn <= iso && iso < h.checkOut
         );
-        const isCheckIn = TRIP.hotels.some((h) => h.checkIn === iso);
         const isCheckOut = TRIP.hotels.some((h) => h.checkOut === iso);
 
         const hasAnyEvent =
@@ -130,9 +139,7 @@ export default function Itinerary() {
                 <GameCard game={gameEntry.game} index={gameEntry.index} />
               ) : null}
 
-              {activeHotel ? (
-                <StayBlock hotel={activeHotel} startIso={TRIP.meta.start} />
-              ) : null}
+              {activeHotel ? <StayBlock hotel={activeHotel} /> : null}
 
               {isCheckOut && !activeHotel ? (
                 <div className="event event-hotel">
@@ -147,12 +154,6 @@ export default function Itinerary() {
                   <div className="type">Aufenthalt</div>
                   <div className="title">Ruhetag</div>
                   <div className="sub">{fmt.weekday}</div>
-                </div>
-              ) : null}
-
-              {isCheckIn && activeHotel ? (
-                <div className="day-tag-row">
-                  <span className="day-tag-chip">Check-in heute</span>
                 </div>
               ) : null}
             </div>

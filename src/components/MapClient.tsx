@@ -10,6 +10,7 @@ const TripMap = dynamic(() => import("./Map"), {
 interface Props {
   interactive?: boolean;
   className?: string;
+  focusId?: string;
 }
 
 export default function MapClient(props: Props) {

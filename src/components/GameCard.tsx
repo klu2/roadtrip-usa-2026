@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Game } from "@/data/trip.types";
 
 interface Props {
@@ -46,6 +47,11 @@ export default function GameCard({ game, index }: Props) {
           <div className="k">Stadt</div>
           <div className="v">{game.city}</div>
         </div>
+      </div>
+      <div className="game-card-footer">
+        <Link className="stay-link" href={`/karte?focus=${game.id}`} prefetch>
+          Stadion auf Karte zeigen →
+        </Link>
       </div>
     </article>
   );
