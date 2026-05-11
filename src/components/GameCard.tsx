@@ -1,4 +1,4 @@
-import type { Game } from "@/data/trip";
+import type { Game } from "@/data/trip.types";
 import { fmtDate } from "@/lib/format";
 
 interface Props {

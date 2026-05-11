@@ -1,4 +1,5 @@
-import { TRIP, type Hotel } from "@/data/trip";
+import { TRIP } from "@/data/trip";
+import type { Hotel } from "@/data/trip.types";
 import { enumerateDays, fmtDate } from "@/lib/format";
 
 type EventKind = "flight" | "drive" | "hotel" | "game" | "free";

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
+import Lightbox from "@/components/Lightbox";
 
 export const metadata: Metadata = {
   title: "WM-Roadtrip 2026 — Österreich",
@@ -25,7 +26,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Lightbox />
+      </body>
     </html>
   );
 }

@@ -20,7 +20,7 @@ There is no lint script and no test suite. Verification = `npm run build` (this 
 
 ### Single source of truth for trip data
 
-**`src/data/trip.ts`** holds everything dynamic: `meta`, `games`, `hotels`, `flights`, `drives`, `booking`. Hotels mostly have `name: "Hotel TBD — …"` placeholders that get filled in as bookings confirm — **editing this file is the primary way to update the site**. Coords are `[lat, lon]` tuples; dates are ISO `YYYY-MM-DD`. A hotel's `checkOut` is the morning of departure, so the last *slept* night is `checkOut - 1` — this matters for badge math (see below).
+**`src/data/trip.ts`** holds everything dynamic: `meta`, `games`, `hotels`, `flights`, `drives`, `booking`. **Types live separately in `src/data/trip.types.ts`** — keep `trip.ts` pure data, no interface declarations. Hotels mostly have `name: "Hotel TBD — …"` placeholders that get filled in as bookings confirm — **editing `trip.ts` is the primary way to update the site**. Coords are `[lat, lon]` tuples; dates are ISO `YYYY-MM-DD`. A hotel's `checkOut` is the morning of departure, so the last *slept* night is `checkOut - 1` — this matters for badge math (see below).
 
 ### Leaflet map, client-only
 
