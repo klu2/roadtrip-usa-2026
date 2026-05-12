@@ -46,15 +46,23 @@ export default function TripMap({ interactive = false, className, focusId }: Pro
         }
       ).addTo(map);
 
-      // Build chronological stops
-      const stops: { coords: [number, number]; date: string }[] = [];
+      // Build chronological stops. On match days the route is
+      // previous-night hotel → stadium → that-night hotel, so when a
+      // hotel checks in on the same date as a game, the game stop
+      // sorts first.
+      const stops: { coords: [number, number]; date: string; kind: "hotel" | "game" }[] = [];
       TRIP.hotels.forEach((h) =>
-        stops.push({ coords: h.coords, date: h.checkIn })
+        stops.push({ coords: h.coords, date: h.checkIn, kind: "hotel" })
       );
       TRIP.games.forEach((g) =>
-        stops.push({ coords: g.coords, date: g.date })
+        stops.push({ coords: g.coords, date: g.date, kind: "game" })
       );
-      stops.sort((a, b) => a.date.localeCompare(b.date));
+      stops.sort((a, b) => {
+        const d = a.date.localeCompare(b.date);
+        if (d !== 0) return d;
+        if (a.kind === b.kind) return 0;
+        return a.kind === "game" ? -1 : 1;
+      });
 
       const routeLatLngs = stops.map((s) => s.coords);
       if (routeLatLngs.length > 1) {
