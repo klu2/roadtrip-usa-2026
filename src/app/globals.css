@@ -22,6 +22,7 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
   background: var(--weiss);
@@ -418,11 +419,50 @@ section { padding: 26px 0 12px; }
   position: relative;
 }
 
+/* ---------- Day-jump quick row (under the map) ---------- */
+.day-jump {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+  max-width: 420px;
+  margin: 12px auto 4px;
+  padding: 4px 0;
+  justify-items: stretch;
+}
+.day-chip {
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+}
+.day-chip.match {
+  background: var(--rot);
+  border-color: var(--rot-deep);
+  color: white;
+}
+.day-chip:hover { background: var(--weiss); }
+.day-chip.match:hover { background: var(--rot-deep); }
+.day-chip:active { transform: translateY(1px); }
+
 /* ---------- Itinerary (full-bleed day blocks) ---------- */
 .plan-section { padding: 0; }
 .itinerary { display: flex; flex-direction: column; }
 
-.day-block { position: relative; }
+.day-block { position: relative; scroll-margin-top: 12px; }
 
 .day-header {
   background: var(--paper);

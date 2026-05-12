@@ -137,7 +137,7 @@ export default function Itinerary() {
           showStayPlaceholder;
 
         return (
-          <article key={iso} className="day-block">
+          <article key={iso} id={`tag-${dayNum}`} className="day-block">
             <header className={"day-header" + (isMatch ? " match" : "")}>
               <div className="day-header-inner">
                 <h3 className="day-mark">

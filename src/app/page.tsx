@@ -1,6 +1,7 @@
 import Link from "next/link";
 import MapClient from "@/components/MapClient";
 import Itinerary from "@/components/Itinerary";
+import DayJumpRow from "@/components/DayJumpRow";
 import { TRIP } from "@/data/trip";
 import { fmtDate } from "@/lib/format";
 
@@ -80,6 +81,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <DayJumpRow />
         </section>
       </div>
 
