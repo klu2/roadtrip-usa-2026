@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const ZOOMABLE_SELECTOR = ".stay-photo, .stadium-photo";
+const ZOOMABLE_SELECTOR = ".stay-photo, .stadium-photo, .event-photo";
 
 export default function Lightbox() {
   const [src, setSrc] = useState<string | null>(null);

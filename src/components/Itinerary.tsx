@@ -78,7 +78,10 @@ export default function Itinerary() {
         const isLast = idx === days.length - 1;
 
         const flights = TRIP.flights.filter((f) => f.date === iso);
-        const drives = TRIP.drives.filter((d) => d.date === iso);
+        const allDrives = TRIP.drives.filter((d) => d.date === iso);
+        const drives = allDrives.filter((d) => !d.afterGame);
+        const postMatchDrives = allDrives.filter((d) => d.afterGame);
+        const activities = TRIP.activities.filter((a) => a.date === iso);
         const activeHotel = TRIP.hotels.find(
           (h) => h.checkIn <= iso && iso < h.checkOut
         );
@@ -86,7 +89,8 @@ export default function Itinerary() {
 
         const hasAnyEvent =
           flights.length > 0 ||
-          drives.length > 0 ||
+          allDrives.length > 0 ||
+          activities.length > 0 ||
           isMatch ||
           !!activeHotel ||
           isCheckOut;
@@ -135,9 +139,46 @@ export default function Itinerary() {
                 </div>
               ))}
 
+              {activities.map((a) => (
+                <div
+                  key={a.id}
+                  className={
+                    "event event-activity" + (a.photo ? " has-photo" : "")
+                  }
+                >
+                  {a.photo ? (
+                    <div className="event-photo">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={a.photo} alt={a.title} loading="lazy" />
+                    </div>
+                  ) : null}
+                  <div className="event-content">
+                    <div className="type">
+                      Aktivität{a.time ? ` · ${a.time}` : ""}
+                    </div>
+                    <div className="title">{a.title}</div>
+                    {a.subtitle ? (
+                      <div className="sub">{a.subtitle}</div>
+                    ) : null}
+                  </div>
+                </div>
+              ))}
+
               {gameEntry ? (
                 <GameCard game={gameEntry.game} index={gameEntry.index} />
               ) : null}
+
+              {postMatchDrives.map((d) => (
+                <div key={d.id} className="event event-drive">
+                  <div className="type">Heimfahrt nach dem Spiel</div>
+                  <div className="title">
+                    {d.from} → {d.to}
+                  </div>
+                  <div className="sub">
+                    ~{d.km} km · ~{d.hrs} h
+                  </div>
+                </div>
+              ))}
 
               {activeHotel ? <StayBlock hotel={activeHotel} /> : null}
 

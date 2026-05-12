@@ -62,6 +62,18 @@ export interface Drive {
   to: string;
   km: number;
   hrs: number;
+  /** Render after the game card on match days (post-match drive home). */
+  afterGame?: boolean;
+}
+
+export interface Activity {
+  id: string;
+  date: string;
+  time?: string;
+  title: string;
+  subtitle?: string;
+  city?: string;
+  photo?: string;
 }
 
 export interface Booking {
@@ -75,5 +87,6 @@ export interface Trip {
   hotels: Hotel[];
   flights: Flight[];
   drives: Drive[];
+  activities: Activity[];
   booking: Booking;
 }

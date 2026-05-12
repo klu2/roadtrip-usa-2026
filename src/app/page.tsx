@@ -8,6 +8,7 @@ export default function Home() {
   const m = TRIP.meta;
   const start = fmtDate(m.start);
   const end = fmtDate(m.end);
+  const totalKm = TRIP.drives.reduce((sum, d) => sum + d.km, 0);
 
   return (
     <>
@@ -34,9 +35,9 @@ export default function Home() {
                 {end.day} {end.month}
               </div>
             </div>
-            <div className="meta-cell" title={m.crew.join(" · ")}>
-              <div className="k">Truppe</div>
-              <div className="v">{m.crew.length} Mann</div>
+            <div className="meta-cell" title={`${totalKm.toLocaleString("de-DE")} km gesamt`}>
+              <div className="k">Strecke</div>
+              <div className="v">{totalKm.toLocaleString("de-DE")} km</div>
             </div>
           </div>
         </header>
