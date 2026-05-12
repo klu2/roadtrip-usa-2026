@@ -570,7 +570,14 @@ section { padding: 26px 0 12px; }
 .event.event-game .type::before { background: var(--rot); }
 .event.event-game .type { color: var(--rot); }
 .event.event-flight .type::before { background: var(--pitch); }
-.event.event-drive .type::before { background: #c4a55a; }
+.event.event-drive .type::before { display: none; }
+.car-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  color: #c4a55a;
+  flex-shrink: 0;
+}
 .event.event-activity .type::before { background: #6b4c93; }
 .event.event-activity .type { color: #6b4c93; }
 .event.event-activity.has-photo {

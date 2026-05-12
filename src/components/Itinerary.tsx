@@ -9,6 +9,26 @@ import {
 import type { Hotel } from "@/data/trip.types";
 import GameCard from "./GameCard";
 
+const CarIcon = () => (
+  <svg
+    className="car-icon"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M3 16 H21" />
+    <path d="M5 16 L5 13 L7.5 9 H16.5 L19 13 L19 16" />
+    <line x1="12" y1="9" x2="12" y2="13" />
+    <circle cx="8" cy="16.5" r="1.5" fill="currentColor" stroke="none" />
+    <circle cx="16" cy="16.5" r="1.5" fill="currentColor" stroke="none" />
+  </svg>
+);
+
 const BedIcon = () => (
   <svg
     className="bed-icon"
@@ -85,15 +105,13 @@ export default function Itinerary() {
         const activeHotel = TRIP.hotels.find(
           (h) => h.checkIn <= iso && iso < h.checkOut
         );
-        const isCheckOut = TRIP.hotels.some((h) => h.checkOut === iso);
 
         const hasAnyEvent =
           flights.length > 0 ||
           allDrives.length > 0 ||
           activities.length > 0 ||
           isMatch ||
-          !!activeHotel ||
-          isCheckOut;
+          !!activeHotel;
 
         return (
           <article key={iso} className="day-block">
@@ -129,7 +147,10 @@ export default function Itinerary() {
 
               {drives.map((d) => (
                 <div key={d.id} className="event event-drive">
-                  <div className="type">Fahrt</div>
+                  <div className="type">
+                    <CarIcon />
+                    Fahrt
+                  </div>
                   <div className="title">
                     {d.from} → {d.to}
                   </div>
@@ -170,7 +191,10 @@ export default function Itinerary() {
 
               {postMatchDrives.map((d) => (
                 <div key={d.id} className="event event-drive">
-                  <div className="type">Heimfahrt nach dem Spiel</div>
+                  <div className="type">
+                    <CarIcon />
+                    Heimfahrt nach dem Spiel
+                  </div>
                   <div className="title">
                     {d.from} → {d.to}
                   </div>
@@ -181,14 +205,6 @@ export default function Itinerary() {
               ))}
 
               {activeHotel ? <StayBlock hotel={activeHotel} /> : null}
-
-              {isCheckOut && !activeHotel ? (
-                <div className="event event-hotel">
-                  <div className="type">Check-out</div>
-                  <div className="title">Weiterreise</div>
-                  <div className="sub">{fmt.weekday}</div>
-                </div>
-              ) : null}
 
               {!hasAnyEvent ? (
                 <div className="event event-rest">
