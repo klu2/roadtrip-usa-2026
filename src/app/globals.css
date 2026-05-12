@@ -627,6 +627,19 @@ section { padding: 26px 0 12px; }
   border: 1px solid var(--ink-15);
   border-radius: 10px;
 }
+.stay-block.stay-placeholder {
+  background: transparent;
+  border: 1.5px dashed var(--ink-15);
+}
+.stay-block.stay-placeholder .stay-name {
+  color: var(--ink-2);
+}
+.stay-block.stay-placeholder .stay-photo-fallback {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 0;
+  color: var(--ink-50);
+}
 .stay-photo {
   width: 140px; height: 140px;
   border-radius: 6px;

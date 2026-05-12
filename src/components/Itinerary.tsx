@@ -49,6 +49,22 @@ const BedIcon = () => (
   </svg>
 );
 
+const StayPlaceholder = () => (
+  <div className="stay-block stay-placeholder">
+    <div className="stay-photo empty">
+      <span className="stay-photo-fallback">?</span>
+    </div>
+    <div className="stay-body">
+      <div className="stay-label">
+        <BedIcon />
+        <span>Übernachtung</span>
+      </div>
+      <div className="stay-name">Noch nicht gebucht</div>
+      <div className="stay-meta">Hotel folgt — Etappe noch offen</div>
+    </div>
+  </div>
+);
+
 const StayBlock = ({ hotel }: { hotel: Hotel }) => {
   const ci = fmtDate(hotel.checkIn);
   const co = fmtDate(hotel.checkOut);
@@ -106,12 +122,19 @@ export default function Itinerary() {
           (h) => h.checkIn <= iso && iso < h.checkOut
         );
 
+        // Show a "noch nicht gebucht" placeholder on unbooked nights —
+        // skip the trip's final day (arrival home, no overnight needed)
+        // and skip days that are pure travel (flights cover the night).
+        const showStayPlaceholder =
+          !activeHotel && flights.length === 0 && iso !== TRIP.meta.end;
+
         const hasAnyEvent =
           flights.length > 0 ||
           allDrives.length > 0 ||
           activities.length > 0 ||
           isMatch ||
-          !!activeHotel;
+          !!activeHotel ||
+          showStayPlaceholder;
 
         return (
           <article key={iso} className="day-block">
@@ -204,7 +227,11 @@ export default function Itinerary() {
                 </div>
               ))}
 
-              {activeHotel ? <StayBlock hotel={activeHotel} /> : null}
+              {activeHotel ? (
+                <StayBlock hotel={activeHotel} />
+              ) : showStayPlaceholder ? (
+                <StayPlaceholder />
+              ) : null}
 
               {!hasAnyEvent ? (
                 <div className="event event-rest">
