@@ -6,7 +6,21 @@ import Lightbox from "@/components/Lightbox";
 
 export const metadata: Metadata = {
   title: "WM-Roadtrip 2026 — Österreich",
-  description: "Mit Österreich unterwegs — 4 Mann, 3 Spiele, 19 Tage. FIFA WM 2026 in den USA.",
+  description:
+    "Mit Österreich unterwegs — 4 Mann, 3 Spiele, 19 Tage. FIFA WM 2026 in den USA.",
+  openGraph: {
+    title: "WM-Roadtrip 2026 — Österreich",
+    description:
+      "Mit Österreich unterwegs — 4 Mann, 3 Spiele, 19 Tage. FIFA WM 2026 in den USA.",
+    type: "website",
+    locale: "de_AT",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WM-Roadtrip 2026 — Österreich",
+    description:
+      "Mit Österreich unterwegs — 4 Mann, 3 Spiele, 19 Tage. FIFA WM 2026 in den USA.",
+  },
 };
 
 export const viewport: Viewport = {
