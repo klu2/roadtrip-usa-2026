@@ -37,6 +37,10 @@ The map renders: hotel markers (red pill divIcons, badge = trip-night number), g
 
 `src/lib/format.ts` exposes `stayBadge(checkIn, checkOut, tripStart)`. Night of `tripStart` is night 1. A single-night stay returns `"6"`; a multi-night stay returns a range like `"13-16"`. The map pin is a CSS pill that grows with text length — when changing this, recompute `iconAnchor` based on the badge string length (see `Map.tsx`).
 
+### Route track from photo GPS
+
+The map's route polyline is bent onto the real roads we drove using GPS extracted from the EXIF of on-the-road photos. Photos → `scripts/extract-gps.mjs` → `scripts/gps-raw.json` → `scripts/build-track.mjs` → **`src/data/track.ts`** (generated `TRACK`, do not hand-edit). `Map.tsx` merges that track with the hotels/games on one local-time timeline so the line follows the route in capture order. Pre-trip SF hotels and `reachedOnFoot` games get a marker but no drive line. The full logic, tunables (`START_DATE`, `SEED`, `EXCLUDE`, `minKm`), and the regenerate-after-new-photos steps are documented in **`scripts/README.md`** — read it before touching the track pipeline. The photo folder itself is not in the repo.
+
 ### Styling
 
 Plain CSS in `src/app/globals.css`, no Tailwind, no CSS modules. The design system is locked to:

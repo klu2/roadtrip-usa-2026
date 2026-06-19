@@ -33,6 +33,7 @@ export const TRIP: Trip = {
       coords: [37.403, -121.97],
       tournamentName: "San Francisco Bay Area Stadium",
       capacity: 68500,
+      reachedOnFoot: true, // walked from the Sunnyvale motel — no drive line
     },
     {
       id: "g2",

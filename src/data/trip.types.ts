@@ -28,6 +28,8 @@ export interface Game {
   coords: Coords;
   tournamentName: string;
   capacity: number;
+  /** We walked from the hotel — show the marker, but no drive line to it. */
+  reachedOnFoot?: boolean;
 }
 
 export interface Hotel {
