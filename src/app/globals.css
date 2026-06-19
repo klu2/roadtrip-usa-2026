@@ -1024,3 +1024,81 @@ footer.foot .ball {
   font-size: 13px;
   font-weight: 600;
 }
+
+/* ---------- Rich day card body (overview) ---------- */
+.day-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px 20px;
+}
+.match-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--rot);
+  color: #fff;
+  text-decoration: none;
+}
+.match-banner-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.match-banner-teams {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.match-banner-teams .crest {
+  width: 20px; height: 14px; border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+.match-banner-vs { opacity: 0.8; font-size: 12px; font-weight: 600; }
+.match-banner-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  opacity: 0.9;
+}
+.day-headline { display: flex; flex-direction: column; gap: 2px; }
+.day-title-link { text-decoration: none; color: inherit; }
+.day-title {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 19px;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.day-subtitle { font-size: 13.5px; color: rgba(24, 21, 19, 0.62); }
+.day-hotel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.day-hotel .bed-icon { width: 18px; height: 18px; color: rgba(24, 21, 19, 0.55); flex: 0 0 auto; }
+.day-hotel-name { font-weight: 600; }
+.day-hotel-city { color: rgba(24, 21, 19, 0.5); font-family: "JetBrains Mono", monospace; font-size: 11px; }
+.day-hotel.placeholder .day-hotel-name { color: rgba(24, 21, 19, 0.45); font-style: italic; font-weight: 500; }
+.day-actions { display: flex; gap: 8px; margin-top: 2px; }
+.day-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(24, 21, 19, 0.16);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink);
+}
+.day-action.primary { background: var(--ink); color: var(--weiss); border-color: var(--ink); }
