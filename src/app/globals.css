@@ -994,3 +994,33 @@ footer.foot .ball {
 }
 .day-figures .figure b { color: var(--ink); font-weight: 600; }
 .day-stats.compact .day-figures { font-size: 11px; }
+
+/* ---------- Photo strip (overview card) ---------- */
+.photo-strip {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  text-decoration: none;
+}
+.photo-strip-thumb {
+  flex: 1 1 0;
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(24, 21, 19, 0.06);
+}
+.photo-strip-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-strip-more {
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--weiss);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 600;
+}
