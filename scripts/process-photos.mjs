@@ -88,7 +88,12 @@ for (const token of tokens) {
 const merged = [...byId.values()].sort((a, b) => (a.time || "").localeCompare(b.time || ""));
 writeFileSync(MANIFEST, JSON.stringify(merged, null, 2) + "\n");
 
-const placed = merged.filter((e) => e.coords);
+// Only photos with both a position and a parseable time make it onto the map
+// (TripPhoto.time is a required string). Warn on anything dropped for time.
+merged
+  .filter((e) => e.coords && !e.time)
+  .forEach((e) => console.warn(`! no time: ${e.file} (has GPS but unparseable date, skipped from map)`));
+const placed = merged.filter((e) => e.coords && e.time);
 const rows = placed
   .map((e) => {
     const cap = e.caption ? `, caption: ${JSON.stringify(e.caption)}` : "";
