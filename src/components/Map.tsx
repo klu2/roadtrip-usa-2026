@@ -6,7 +6,8 @@ import { TRIP } from "@/data/trip";
 import { TRACK } from "@/data/track";
 import { ROUTE_GEOMETRY } from "@/data/route-geometry";
 import { PHOTOS } from "@/data/photos";
-import { fmtDate, stayBadge } from "@/lib/format";
+import { fmtDate, stayBadge, enumerateDays } from "@/lib/format";
+import { buildDay } from "@/lib/day";
 
 /** Comparable local-time value from "YYYY-MM-DD" + "HH:MM" (no timezone). */
 function localKey(date: string, time: string): number {
@@ -27,9 +28,11 @@ interface Props {
   className?: string;
   /** Hotel or game id to zoom in on and pop open. */
   focusId?: string;
+  /** 1-based trip-day number to frame the map on (overrides the trip-wide fit). */
+  focusDay?: number;
 }
 
-export default function TripMap({ interactive = false, className, focusId }: Props) {
+export default function TripMap({ interactive = false, className, focusId, focusDay }: Props) {
   const hostRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
 
@@ -255,6 +258,25 @@ export default function TripMap({ interactive = false, className, focusId }: Pro
       if (focusId && markers[focusId]) {
         markers[focusId].openPopup();
       }
+
+      // Frame a single day if requested via ?day=<n>: bounds over that day's
+      // photo GPS, the night's hotel, and the game (if any).
+      if (focusDay != null) {
+        const dayIso = enumerateDays(TRIP.meta.start, TRIP.meta.end)[focusDay - 1];
+        if (dayIso) {
+          const dv = buildDay(dayIso);
+          const pts: [number, number][] = [
+            ...dv.photos.map((p) => p.coords),
+            ...(dv.hotel ? [dv.hotel.coords] : []),
+            ...(dv.game ? [dv.game.game.coords] : []),
+          ];
+          if (pts.length === 1) {
+            map.setView(pts[0], 11);
+          } else if (pts.length > 1) {
+            map.fitBounds(L.latLngBounds(pts), { padding: [50, 50], maxZoom: 12 });
+          }
+        }
+      }
     })();
 
     return () => {
@@ -264,7 +286,7 @@ export default function TripMap({ interactive = false, className, focusId }: Pro
         mapRef.current = null;
       }
     };
-  }, [interactive, focusId]);
+  }, [interactive, focusId, focusDay]);
 
   return <div ref={hostRef} className={className || "map-host"} />;
 }
