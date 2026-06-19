@@ -313,10 +313,10 @@ section { padding: 26px 0 12px; }
   display: block;
 }
 .photo-cluster {
-  background: var(--rot);
-  color: #fff;
-  border: 2px solid #fff;
-  border-radius: 50%;
+  background: var(--ink);
+  color: var(--weiss);
+  border: 2px solid var(--weiss);
+  border-radius: 6px;
   width: 40px !important;
   height: 40px !important;
   display: flex;
