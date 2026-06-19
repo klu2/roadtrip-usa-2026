@@ -94,7 +94,7 @@ export interface Trip {
 }
 
 export interface TripPhoto {
-  /** Stable slug, e.g. "p-20260613-160124249". */
+  /** Stable slug, e.g. "p-20260613-160124". */
   id: string;
   /** [lat, lon] from photo EXIF GPS. */
   coords: [number, number];

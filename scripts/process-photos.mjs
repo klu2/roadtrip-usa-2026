@@ -12,7 +12,7 @@ import { join } from "node:path";
 import sharp from "sharp";
 import { readEXIF } from "./exif-reader.mjs";
 
-const PHOTO_DIR = "C:\\Users\\KlausLehner\\Pictures\\USA-Roadtrip";
+const PHOTO_DIR = process.env.PHOTO_DIR || "C:\\Users\\KlausLehner\\Pictures\\USA-Roadtrip";
 const PUBLIC_DIR = join(import.meta.dirname, "..", "public", "photos");
 const MANIFEST = join(import.meta.dirname, "photos.manifest.json");
 const OUT_TS = join(import.meta.dirname, "..", "src", "data", "photos.ts");
@@ -86,7 +86,7 @@ for (const token of tokens) {
 }
 
 const merged = [...byId.values()].sort((a, b) => (a.time || "").localeCompare(b.time || ""));
-writeFileSync(MANIFEST, JSON.stringify(merged, null, 2));
+writeFileSync(MANIFEST, JSON.stringify(merged, null, 2) + "\n");
 
 const placed = merged.filter((e) => e.coords);
 const rows = placed
