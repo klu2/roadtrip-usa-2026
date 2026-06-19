@@ -92,3 +92,21 @@ export interface Trip {
   activities: Activity[];
   booking: Booking;
 }
+
+export interface TripPhoto {
+  /** Stable slug, e.g. "p-20260613-160124". */
+  id: string;
+  /** [lat, lon] from photo EXIF GPS. */
+  coords: [number, number];
+  /** Local wall-clock capture time, "YYYY-MM-DDTHH:MM:SS". */
+  time: string;
+  /** Public path to the small map-marker thumbnail. */
+  thumb: string;
+  /** Public path to the full-size (lightbox) image. */
+  full: string;
+  /** Full-image pixel width / height (post-resize). */
+  w: number;
+  h: number;
+  /** Hand-written caption (edited in scripts/photos.manifest.json). */
+  caption?: string;
+}

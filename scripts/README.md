@@ -114,3 +114,27 @@ When a new leg looks wrong, the fix is almost always a tunable above:
 `gps-raw.json` is committed as a cache so the track can be rebuilt without
 the photos (which are not in the repo) — but a fresh `extract-gps.mjs` run is
 what picks up newly added photos.
+
+## Embedding photos on the map (`process-photos.mjs`)
+
+Separate from the route track: a **curated** set of photos shown as thumbnail
+markers on the map. Pick the photos you want, then:
+
+```bash
+node scripts/process-photos.mjs PXL_20260613_160124249.MP PXL_20260613_180353838
+```
+
+Tokens may omit the `.jpg` suffix (resolved by prefix). The script:
+
+- reads EXIF GPS + capture time (`exif-reader.mjs`, shared with `extract-gps.mjs`),
+- writes `public/photos/<id>.jpg` (≤1600px) + `<id>-thumb.jpg` (≤200px), GPS
+  metadata stripped,
+- **upserts** `scripts/photos.manifest.json` — the hand-editable source of
+  truth. Re-running never overwrites a `caption` you've written there,
+- regenerates `src/data/photos.ts` (GENERATED — do not hand-edit).
+
+**Captions:** edit the `caption` field in `scripts/photos.manifest.json`, then
+re-run the script (with the same or no new tokens) to regenerate `photos.ts`.
+
+Photos with no GPS are recorded in the manifest with `coords: null` and skipped
+from the map until you hand-add coordinates.
