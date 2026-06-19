@@ -196,4 +196,28 @@ export const TRIP: Trip = {
       photo: "/activities/heli-vegas-strip.jpg",
     },
   ],
+
+  // Per-day editorial content. Titles/subtitles are drafts to edit freely.
+  // `states` = USPS codes the day touches (see src/data/states.ts).
+  days: [
+    { date: "2026-06-12", title: "Anreise über den großen Teich", subtitle: "Wien → Frankfurt → Las Vegas → San Francisco", states: ["CA"] },
+    { date: "2026-06-13", title: "San Francisco entdecken", subtitle: "Erster voller Tag in der Bay Area", states: ["CA"] },
+    { date: "2026-06-14", title: "Golden Gate & Fisherman's Wharf", subtitle: "Zu Fuß durch die Stadt", states: ["CA"] },
+    { date: "2026-06-15", title: "Letzter Tag vor dem Anpfiff", subtitle: "Bay-Area-Stimmung tanken", states: ["CA"] },
+    { date: "2026-06-16", title: "Anpfiff in Santa Clara", subtitle: "Österreich – Jordanien · Levi's Stadium", states: ["CA"] },
+    { date: "2026-06-17", title: "Über die Wüste nach Vegas", subtitle: "Nachts im Helikopter über dem Strip", states: ["CA", "NV"] },
+    { date: "2026-06-18", title: "Tor zum Grand Canyon", subtitle: "Von Las Vegas nach Flagstaff", states: ["NV", "AZ"] },
+    { date: "2026-06-19", title: "Auf der Route 66 nach Santa Fe", subtitle: "Wüstenhighways nach New Mexico", states: ["AZ", "NM"] },
+    { date: "2026-06-20", title: "Langer Ritt nach Texas", subtitle: "Santa Fe → Dallas", states: ["NM", "TX"] },
+    { date: "2026-06-21", title: "Ankommen in Dallas", subtitle: "Basislager für Spiel 2", states: ["TX"] },
+    { date: "2026-06-22", title: "Österreich gegen Messi & Co.", subtitle: "Argentinien – Österreich · AT&T Stadium", states: ["TX"] },
+    { date: "2026-06-23", title: "Verschnaufen in Dallas", subtitle: "Ruhetag in Texas", states: ["TX"] },
+    { date: "2026-06-24", title: "Quer durch die Great Plains", subtitle: "Dallas → Topeka", states: ["TX", "OK", "KS"] },
+    { date: "2026-06-25", title: "Unterwegs in Kansas", subtitle: "Etappe noch offen", states: ["KS"] },
+    { date: "2026-06-26", title: "Basislager Topeka", subtitle: "Vor dem letzten Gruppenspiel", states: ["KS"] },
+    { date: "2026-06-27", title: "Finale in Kansas City", subtitle: "Algerien – Österreich · Arrowhead Stadium", states: ["KS", "MO"] },
+    { date: "2026-06-28", title: "Letzte Etappe nach Texas", subtitle: "Topeka → Grapevine (DFW)", states: ["KS", "OK", "TX"] },
+    { date: "2026-06-29", title: "Heimreise", subtitle: "Dallas → Houston → Toronto → Wien", states: ["TX"] },
+    { date: "2026-06-30", title: "Ankunft in Wien", subtitle: "Zurück in Österreich" },
+  ],
 };
