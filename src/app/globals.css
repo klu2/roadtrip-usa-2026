@@ -313,18 +313,38 @@ section { padding: 26px 0 12px; }
   display: block;
 }
 .photo-cluster {
-  background: var(--ink);
-  color: var(--weiss);
-  border: 2px solid var(--weiss);
-  border-radius: 6px;
-  width: 40px !important;
-  height: 40px !important;
+  background: var(--weiss);
+  border-radius: 8px;
+  width: 38px !important;
+  height: 38px !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.photo-cluster__cam {
+  width: 22px;
+  height: 22px;
+  fill: var(--ink);
+  display: block;
+}
+.photo-cluster__n {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--rot);
+  color: #fff;
+  border: 1.5px solid var(--weiss);
   font-family: var(--font-display);
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  box-sizing: border-box;
 }
 .leaflet-popup-content {
   font-family: var(--font-body);
