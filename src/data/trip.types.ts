@@ -83,6 +83,17 @@ export interface Booking {
   confirmation: string;
 }
 
+export interface DayInfo {
+  /** ISO date YYYY-MM-DD — the key for this day. */
+  date: string;
+  /** Headline, e.g. »Anpfiff in Santa Clara«. */
+  title?: string;
+  /** One-line description of the day. */
+  subtitle?: string;
+  /** USPS state codes the day touches, e.g. ["CA","NV"]. */
+  states?: string[];
+}
+
 export interface Trip {
   meta: TripMeta;
   games: Game[];
@@ -91,6 +102,7 @@ export interface Trip {
   drives: Drive[];
   activities: Activity[];
   booking: Booking;
+  days: DayInfo[];
 }
 
 export interface TripPhoto {
