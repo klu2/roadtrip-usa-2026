@@ -82,12 +82,12 @@ export const TRIP: Trip = {
     },
     {
       id: "h2",
-      name: "Motel 6 San Jose, CA – Airport",
-      city: "San Jose, CA",
-      coords: [37.385, -121.927],
+      name: "Motel 6 Sunnyvale, CA – South",
+      city: "Sunnyvale, CA",
+      coords: [37.3953, -122.0276],
       checkIn: "2026-06-16",
       checkOut: "2026-06-17",
-      photo: "/hotels/hotel-sj-airport.jpg",
+      photo: "/hotels/motel-6-sunnyvale.jpg",
       notes: "Übernachtung nach Spiel 1 (Levi's Stadium)",
     },
     {
@@ -122,12 +122,12 @@ export const TRIP: Trip = {
     },
     {
       id: "h6",
-      name: "Motel 6 Dallas, TX – North – Richardson",
-      city: "Richardson, TX",
-      coords: [32.9483, -96.73],
-      checkIn: "2026-06-22",
+      name: "Comfort Inn Dallas Park Central",
+      city: "Dallas, TX",
+      coords: [32.9254, -96.7713],
+      checkIn: "2026-06-21",
       checkOut: "2026-06-24",
-      photo: "/hotels/hotel-richardson.jpg",
+      photo: "/hotels/comfort-inn-dallas.jpg",
       notes: "Spieltag Argentinien vs Österreich (AT&T Stadium)",
     },
     {
@@ -171,16 +171,16 @@ export const TRIP: Trip = {
   // overnights — split as needed once those bookings are confirmed.
   // `afterGame: true` marks the post-match drive from stadium → night's hotel.
   drives: [
-    { id: "d1", date: "2026-06-16", from: "San Francisco, CA", to: "San Jose, CA", km: 80, hrs: 1 },
-    { id: "d2", date: "2026-06-17", from: "San Jose, CA", to: "Las Vegas, NV", km: 900, hrs: 9 },
+    { id: "d1", date: "2026-06-16", from: "San Francisco, CA", to: "Sunnyvale, CA", km: 70, hrs: 1 },
+    { id: "d2", date: "2026-06-17", from: "Sunnyvale, CA", to: "Las Vegas, NV", km: 900, hrs: 9 },
     { id: "d3", date: "2026-06-18", from: "Las Vegas, NV", to: "Flagstaff, AZ", km: 410, hrs: 4 },
     { id: "d4", date: "2026-06-19", from: "Flagstaff, AZ", to: "Santa Fe, NM", km: 580, hrs: 6 },
-    { id: "d5", date: "2026-06-20", from: "Santa Fe, NM", to: "Richardson, TX", km: 960, hrs: 10 },
-    { id: "d6", date: "2026-06-24", from: "Richardson, TX", to: "Topeka, KS", km: 790, hrs: 7.5 },
+    { id: "d5", date: "2026-06-20", from: "Santa Fe, NM", to: "Dallas, TX", km: 960, hrs: 10 },
+    { id: "d6", date: "2026-06-24", from: "Dallas, TX", to: "Topeka, KS", km: 790, hrs: 7.5 },
     { id: "d7", date: "2026-06-28", from: "Topeka, KS", to: "Grapevine, TX", km: 870, hrs: 8.5 },
     // Post-match drives: stadium → night's hotel (road distance)
-    { id: "d8", date: "2026-06-16", from: "Levi's Stadium, Santa Clara, CA", to: "Motel 6 San Jose Airport", km: 7, hrs: 0.25, afterGame: true },
-    { id: "d9", date: "2026-06-22", from: "AT&T Stadium, Arlington, TX", to: "Motel 6 Richardson, TX", km: 52, hrs: 0.75, afterGame: true },
+    { id: "d8", date: "2026-06-16", from: "Levi's Stadium, Santa Clara, CA", to: "Motel 6 Sunnyvale, CA", km: 8, hrs: 0.25, afterGame: true },
+    { id: "d9", date: "2026-06-22", from: "AT&T Stadium, Arlington, TX", to: "Comfort Inn Dallas Park Central", km: 45, hrs: 0.7, afterGame: true },
     { id: "d10", date: "2026-06-27", from: "Arrowhead Stadium, Kansas City, MO", to: "Baymont Topeka, KS", km: 115, hrs: 1.25, afterGame: true },
   ],
 
