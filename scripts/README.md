@@ -13,10 +13,13 @@ photos (C:\Users\KlausLehner\Pictures\USA-Roadtrip)
 scripts/gps-raw.json        ← raw {file, lat, lon, dateTime, fileTs} per photo
    │  node scripts/build-track.mjs 0.5 --write
    ▼
-src/data/track.ts           ← GENERATED, ordered + thinned TrackPoint[]
+src/data/track.ts  +  scripts/track.json   ← GENERATED, ordered + thinned track
+   │  node scripts/snap-roads.mjs
+   ▼
+src/data/route-geometry.ts  ← GENERATED: ROUTE_GEOMETRY + DAILY_KM + TOTAL_KM
    │  imported by
    ▼
-src/components/Map.tsx       ← merges track with hotels/games into one route
+src/components/Map.tsx       ← solid road line (driven) + dashed line (upcoming)
 ```
 
 - **`extract-gps.mjs`** — pure-JS JPEG/EXIF reader (no dependencies). Walks
@@ -27,6 +30,16 @@ src/components/Map.tsx       ← merges track with hotels/games into one route
 - **`build-track.mjs`** — turns `gps-raw.json` into the ordered, thinned
   track. Run with no `--write` to just print point counts at several spacing
   thresholds; run with `<minKm> --write` to generate `src/data/track.ts`.
+- **`snap-roads.mjs`** — snaps the track onto real OSM roads via the public
+  OSRM routing engine and records how far we actually drove. It routes **day
+  by day** (each day starts at the previous day's last point, so the morning
+  departure counts toward that day), summing OSRM's road distance per day.
+  Output `src/data/route-geometry.ts` exports `ROUTE_GEOMETRY` (the continuous
+  road polyline), `DAILY_KM` (`[{date, km}]`), and `TOTAL_KM`. Per-day results
+  are cached in `scripts/snap-cache.json`, so re-runs only hit the network for
+  new / changed days — pass `--force` to ignore the cache. If OSRM is
+  unreachable for a day it falls back to straight segments + great-circle km
+  and logs a warning (no silent gaps).
 - **`analyze-gps.mjs`** — ad-hoc inspection: per-day point counts and
   bounding boxes. Handy for spotting which day a cluster belongs to.
 
@@ -52,32 +65,43 @@ src/components/Map.tsx       ← merges track with hotels/games into one route
 
 ## How the map consumes it (`Map.tsx`)
 
-All route nodes go on **one local-time timeline** and the polyline is drawn
-through them in time order:
+The route is drawn in **two layers**:
 
-- **Track points** use their real EXIF capture time.
-- **Hotels** sort at `22:00` on their check-in day (so that day's driving
-  precedes the night's stay).
-- **Games** sort at kickoff (so the night's hotel still comes after the match).
+- **Driven** — `ROUTE_GEOMETRY` from `route-geometry.ts`, the road-snapped
+  line of everything we've already driven. Drawn **solid**.
+- **Upcoming** — the hotels/games whose time is *after* the last photo, with
+  no GPS yet, connected in chronological order (hotels sort at `22:00` on
+  check-in, games at kickoff) and continuing from where the driven line ends.
+  Drawn **dashed**.
 
-Two things get a **marker but no drive line** (they're skipped when building
-the polyline, not when placing markers):
+A **car icon** marks the start (the first track point — SFO).
+
+Two things get a **marker but no line** (skipped when building either line,
+not when placing markers):
 
 - **Hotels with `checkIn` before `ROADTRIP_START`** — the pre-trip SF base.
-  Keeps the pin, but no line is drawn out to it.
 - **Games with `reachedOnFoot: true`** (set in `src/data/trip.ts`) — e.g.
-  Levi's, which we walked to from the motel. Ball marker stays; no car line.
+  Levi's, which we walked to from the motel.
+
+`DAILY_KM` / `TOTAL_KM` from the same file are the real driven kilometers,
+available for a stats section (not yet rendered).
 
 ## Regenerating after new photos
 
-On the road we keep taking photos, so after copying new ones into the photo
-folder:
+On the road we keep taking photos, **and the rest of the trip's legs get built
+out as we go**, so after copying new photos into the photo folder run all
+three stages:
 
 ```bash
 node scripts/extract-gps.mjs              # photos      -> gps-raw.json
-node scripts/build-track.mjs 0.5 --write  # gps-raw.json -> src/data/track.ts
+node scripts/build-track.mjs 0.5 --write  # gps-raw.json -> track.ts + track.json
+node scripts/snap-roads.mjs               # track.json  -> route-geometry.ts (cached)
 npm run build                             # type-check / SSR sanity
 ```
+
+As new days are added they appear automatically: the driven (solid) line
+extends, the dashed line shrinks to the still-upcoming legs, and `DAILY_KM`
+gains a row. Only the new/changed days call OSRM (the rest are cached).
 
 When a new leg looks wrong, the fix is almost always a tunable above:
 

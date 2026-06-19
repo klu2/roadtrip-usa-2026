@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import type { Map as LeafletMap } from "leaflet";
 import { TRIP } from "@/data/trip";
 import { TRACK } from "@/data/track";
+import { ROUTE_GEOMETRY } from "@/data/route-geometry";
 import { fmtDate, stayBadge } from "@/lib/format";
 
 /** Comparable local-time value from "YYYY-MM-DD" + "HH:MM" (no timezone). */
@@ -57,45 +58,63 @@ export default function TripMap({ interactive = false, className, focusId }: Pro
         }
       ).addTo(map);
 
-      // Build one chronological timeline of route nodes: hotels and
-      // games are the visible anchors, the photo GPS track bends the line
-      // onto the real roads in between. Everything is sorted on a single
-      // local-time key. Hotels get an evening arrival time (22:00) so the
-      // day's driving photos precede the stay; games use their kickoff, so
-      // the night's hotel still sorts after the match.
+      // The route has two parts. The portion we've already driven is the
+      // GPS track snapped onto real OSM roads (ROUTE_GEOMETRY) — drawn as a
+      // solid line. The upcoming legs we have no photos for yet are drawn as
+      // a dashed "planned" line connecting the remaining hotels/games in
+      // chronological order, continuing from where the driven line ends.
       const ROADTRIP_START = "2026-06-16"; // car pickup; SF days were on foot
-      const route: { coords: [number, number]; key: number }[] = [];
+      const lastTrackKey = TRACK.length
+        ? Math.max(
+            ...TRACK.map((p) => {
+              const [date, time] = p.t.split("T");
+              return localKey(date, time.slice(0, 5));
+            })
+          )
+        : -Infinity;
+
+      // Driven, road-snapped line.
+      if (ROUTE_GEOMETRY.length > 1) {
+        L.polyline(ROUTE_GEOMETRY, {
+          color: "#181513",
+          weight: 3,
+          opacity: 0.85,
+          lineCap: "round",
+          lineJoin: "round",
+        }).addTo(map);
+      }
+
+      // Upcoming anchors (no GPS yet): hotels/games after the last photo.
+      const future: { coords: [number, number]; key: number }[] = [];
       TRIP.hotels.forEach((h) => {
-        // Pre-trip SF base: keep the marker, but it's not on the driving line.
         if (h.checkIn < ROADTRIP_START) return;
-        route.push({ coords: h.coords, key: localKey(h.checkIn, "22:00") });
+        const key = localKey(h.checkIn, "22:00");
+        if (key > lastTrackKey) future.push({ coords: h.coords, key });
       });
       TRIP.games.forEach((g) => {
-        // Walked from the hotel (e.g. Levi's) — marker only, no drive line.
         if (g.reachedOnFoot) return;
         const t = g.kickoff.match(/(\d{1,2}):(\d{2})/);
-        route.push({
-          coords: g.coords,
-          key: localKey(g.date, t ? `${t[1]}:${t[2]}` : "20:00"),
-        });
+        const key = localKey(g.date, t ? `${t[1]}:${t[2]}` : "20:00");
+        if (key > lastTrackKey) future.push({ coords: g.coords, key });
       });
-      TRACK.forEach((p) => {
-        const [date, time] = p.t.split("T");
-        route.push({ coords: p.c, key: localKey(date, time.slice(0, 5)) });
-      });
-      route.sort((a, b) => a.key - b.key);
+      future.sort((a, b) => a.key - b.key);
 
-      const routeLatLngs = route.map((s) => s.coords);
-      if (routeLatLngs.length > 1) {
-        L.polyline(routeLatLngs, {
+      const plannedLatLngs = [
+        ...(ROUTE_GEOMETRY.length ? [ROUTE_GEOMETRY.at(-1)!] : []),
+        ...future.map((f) => f.coords),
+      ];
+      if (plannedLatLngs.length > 1) {
+        L.polyline(plannedLatLngs, {
           color: "#181513",
           weight: 2.5,
-          opacity: 0.75,
+          opacity: 0.55,
           dashArray: "6 6",
           lineCap: "round",
           lineJoin: "round",
         }).addTo(map);
       }
+
+      const routeLatLngs = [...ROUTE_GEOMETRY, ...future.map((f) => f.coords)];
 
       // Hotel markers — badge shows trip-night number(s), e.g. "1-4" or "6"
       TRIP.hotels.forEach((h) => {
@@ -153,6 +172,33 @@ export default function TripMap({ interactive = false, className, focusId }: Pro
             `<div class="pop-title">Tour-Start · SFO</div>` +
               `<div class="pop-sub">Mietwagen abgeholt</div>`
           );
+      }
+
+      // Dev-only debug layer: number every GPS waypoint and show its source
+      // photo, so bad points can be spotted and removed. Gated on NODE_ENV,
+      // so it never appears in the production build.
+      if (process.env.NODE_ENV === "development") {
+        TRACK.forEach((p, i) => {
+          L.circleMarker(p.c, {
+            radius: 5,
+            color: "#1d4ed8",
+            weight: 1,
+            fillColor: "#3b82f6",
+            fillOpacity: 0.9,
+          })
+            .addTo(map)
+            .bindTooltip(String(i), {
+              permanent: true,
+              direction: "top",
+              className: "wp-label",
+              offset: [0, -3],
+            })
+            .bindPopup(
+              `<div class="pop-title">#${i} · ${p.t.slice(11, 19)}</div>` +
+                `<div style="margin-top:4px;font-family:monospace;font-size:11px;word-break:break-all;">${p.f}</div>` +
+                `<div class="pop-sub" style="margin-top:4px;">${p.c[0]}, ${p.c[1]}</div>`
+            );
+        });
       }
 
       if (routeLatLngs.length) {
