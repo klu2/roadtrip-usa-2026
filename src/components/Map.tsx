@@ -5,6 +5,7 @@ import type { Map as LeafletMap } from "leaflet";
 import { TRIP } from "@/data/trip";
 import { TRACK } from "@/data/track";
 import { ROUTE_GEOMETRY } from "@/data/route-geometry";
+import { PHOTOS } from "@/data/photos";
 import { fmtDate, stayBadge } from "@/lib/format";
 
 /** Comparable local-time value from "YYYY-MM-DD" + "HH:MM" (no timezone). */
@@ -38,6 +39,7 @@ export default function TripMap({ interactive = false, className, focusId }: Pro
 
     (async () => {
       const L = (await import("leaflet")).default;
+      await import("leaflet.markercluster");
       if (cancelled || !hostRef.current) return;
 
       const map = L.map(hostRef.current, {
@@ -172,6 +174,43 @@ export default function TripMap({ interactive = false, className, focusId }: Pro
             `<div class="pop-title">Tour-Start · SFO</div>` +
               `<div class="pop-sub">Mietwagen abgeholt</div>`
           );
+      }
+
+      // Curated photo markers — framed thumbnails grouped into clusters. Clicking a
+      // marker opens the global gallery lightbox at that photo (chronological order).
+      if (PHOTOS.length) {
+        const photoSlides = PHOTOS.map((p) => ({
+          src: p.full,
+          alt: p.caption || "",
+          caption: p.caption || "",
+        }));
+        const cluster = (L as typeof L & { markerClusterGroup: Function }).markerClusterGroup({
+          showCoverageOnHover: false,
+          maxClusterRadius: 44,
+          iconCreateFunction: (c: { getChildCount: () => number }) =>
+            L.divIcon({
+              className: "photo-cluster",
+              html: `<span>${c.getChildCount()}</span>`,
+              iconSize: [40, 40],
+              iconAnchor: [20, 20],
+            }),
+        });
+        PHOTOS.forEach((p, i) => {
+          const icon = L.divIcon({
+            className: "photo-pin",
+            html: `<span class="photo-pin__frame"><img src="${p.thumb}" alt="" loading="lazy"/></span>`,
+            iconSize: [54, 60],
+            iconAnchor: [27, 60],
+          });
+          const m = L.marker(p.coords, { icon });
+          m.on("click", () => {
+            window.dispatchEvent(
+              new CustomEvent("lightbox:open", { detail: { slides: photoSlides, index: i } })
+            );
+          });
+          cluster.addLayer(m);
+        });
+        cluster.addTo(map);
       }
 
       // Dev-only debug layer: number every GPS waypoint and show its source
