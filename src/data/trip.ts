@@ -222,13 +222,13 @@ export const TRIP: Trip = {
   // `states` = USPS codes the day touches (see src/data/states.ts).
   days: [
     { date: "2026-06-12", title: "Anreise über den großen Teich", subtitle: "Wien → Frankfurt → Las Vegas → San Francisco", states: ["CA"] },
-    { date: "2026-06-13", title: "San Francisco entdecken", subtitle: "Erster voller Tag in der Bay Area", states: ["CA"] },
+    { date: "2026-06-13", title: "San Francisco entdecken", subtitle: "Erster voller Tag in der Bay Area", states: ["CA"], hero: "p-20260613-220955" },
     { date: "2026-06-14", title: "Alcatraz — Die Gefängnisinsel", subtitle: "Mit der Fähre raus auf »The Rock«", states: ["CA"], hero: "p-20260614-200425" },
     { date: "2026-06-15", title: "Rüber nach Oakland", subtitle: "Letzter Tag vor dem Anpfiff", states: ["CA"] },
     { date: "2026-06-16", title: "Anpfiff in Santa Clara", subtitle: "Österreich – Jordanien · Levi's Stadium", states: ["CA"], hero: "p-20260617-035102" },
-    { date: "2026-06-17", title: "Über die Wüste nach Vegas", subtitle: "Nachts im Helikopter über dem Strip", states: ["CA", "NV"] },
+    { date: "2026-06-17", title: "Über die Wüste nach Vegas", subtitle: "Nachts im Helikopter über dem Strip", states: ["CA", "NV"], hero: "p-20260618-040501" },
     { date: "2026-06-18", title: "Hoover Dam & Route 66", subtitle: "Hinauf in die Berge nach Flagstaff", states: ["NV", "AZ"], hero: "p-20260618-192623" },
-    { date: "2026-06-19", title: "Auf der Route 66 nach Santa Fe", subtitle: "Wüstenhighways nach New Mexico", states: ["AZ", "NM"] },
+    { date: "2026-06-19", title: "Auf der Route 66 nach Santa Fe", subtitle: "Wüstenhighways nach New Mexico", states: ["AZ", "NM"], hero: "p-20260620-014519" },
     { date: "2026-06-20", title: "Is This the Way to Amarillo?", subtitle: "Santa Fe → Amarillo", states: ["NM", "TX"] },
     { date: "2026-06-21", title: "Ankommen in Dallas", subtitle: "Amarillo → Dallas · Basislager für Spiel 2", states: ["TX"] },
     { date: "2026-06-22", title: "Österreich gegen Messi & Co.", subtitle: "Argentinien – Österreich · AT&T Stadium", states: ["TX"] },
