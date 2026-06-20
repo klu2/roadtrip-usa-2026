@@ -7,12 +7,14 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  searchParams: Promise<{ focus?: string | string[] }>;
+  searchParams: Promise<{ focus?: string | string[]; day?: string | string[] }>;
 }
 
 export default async function KartePage({ searchParams }: PageProps) {
   const params = await searchParams;
   const focusId = typeof params.focus === "string" ? params.focus : undefined;
+  const dayRaw = typeof params.day === "string" ? params.day : undefined;
+  const focusDay = dayRaw && /^\d+$/.test(dayRaw) ? Number(dayRaw) : undefined;
 
   return (
     <div className="karte-page">
@@ -24,7 +26,7 @@ export default async function KartePage({ searchParams }: PageProps) {
         <div className="karte-spacer" aria-hidden="true" />
       </header>
       <div className="karte-map">
-        <MapClient interactive className="map-host fill" focusId={focusId} />
+        <MapClient interactive className="map-host fill" focusId={focusId} focusDay={focusDay} />
       </div>
     </div>
   );

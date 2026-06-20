@@ -11,6 +11,7 @@ interface Props {
   interactive?: boolean;
   className?: string;
   focusId?: string;
+  focusDay?: number;
 }
 
 export default function MapClient(props: Props) {
