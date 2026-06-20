@@ -229,7 +229,7 @@ export const TRIP: Trip = {
     { date: "2026-06-17", title: "Über die Wüste nach Vegas", subtitle: "Nachts im Helikopter über dem Strip", states: ["CA", "NV"] },
     { date: "2026-06-18", title: "Hoover Dam & Route 66", subtitle: "Hinauf in die Berge nach Flagstaff", states: ["NV", "AZ"], hero: "p-20260618-192623" },
     { date: "2026-06-19", title: "Auf der Route 66 nach Santa Fe", subtitle: "Wüstenhighways nach New Mexico", states: ["AZ", "NM"] },
-    { date: "2026-06-20", title: "Ins texanische Panhandle", subtitle: "Santa Fe → Amarillo", states: ["NM", "TX"] },
+    { date: "2026-06-20", title: "Is This the Way to Amarillo?", subtitle: "Santa Fe → Amarillo", states: ["NM", "TX"] },
     { date: "2026-06-21", title: "Ankommen in Dallas", subtitle: "Amarillo → Dallas · Basislager für Spiel 2", states: ["TX"] },
     { date: "2026-06-22", title: "Österreich gegen Messi & Co.", subtitle: "Argentinien – Österreich · AT&T Stadium", states: ["TX"] },
     { date: "2026-06-23", title: "Verschnaufen in Dallas", subtitle: "Ruhetag in Texas", states: ["TX"] },
