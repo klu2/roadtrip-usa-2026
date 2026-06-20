@@ -48,6 +48,11 @@ const EXCLUDE = [
   // Stuck GPS fix near Ash Fork: two frozen shots at the same wrong spot
   // (17:09:26 + 17:09:31). Keep the good fix at 17:09:44.
   { from: "2026-06-18T17:09:20", to: "2026-06-18T17:09:40" },
+  // Santa Fe: arrived at the hotel ~19:09 (kept as the leg's waypoint), then
+  // drove/walked into the historic Plaza and wandered downtown all evening and
+  // night. Drop every Santa Fe shot after the arrival — the hotel is the only
+  // relevant waypoint; the rest are on foot. Ends before the morning departure.
+  { from: "2026-06-19T19:15:00", to: "2026-06-20T08:00:00" },
 ];
 
 // Individual photos to drop by filename — isolated bad fixes (not bursts).
