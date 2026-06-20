@@ -227,7 +227,7 @@ export const TRIP: Trip = {
     { date: "2026-06-15", title: "Rüber nach Oakland", subtitle: "Letzter Tag vor dem Anpfiff", states: ["CA"] },
     { date: "2026-06-16", title: "Anpfiff in Santa Clara", subtitle: "Österreich – Jordanien · Levi's Stadium", states: ["CA"], hero: "p-20260617-035102" },
     { date: "2026-06-17", title: "Über die Wüste nach Vegas", subtitle: "Nachts im Helikopter über dem Strip", states: ["CA", "NV"] },
-    { date: "2026-06-18", title: "Tor zum Grand Canyon", subtitle: "Von Las Vegas nach Flagstaff", states: ["NV", "AZ"] },
+    { date: "2026-06-18", title: "Hoover Dam & Route 66", subtitle: "Hinauf in die Berge nach Flagstaff", states: ["NV", "AZ"], hero: "p-20260618-192623" },
     { date: "2026-06-19", title: "Auf der Route 66 nach Santa Fe", subtitle: "Wüstenhighways nach New Mexico", states: ["AZ", "NM"] },
     { date: "2026-06-20", title: "Ins texanische Panhandle", subtitle: "Santa Fe → Amarillo", states: ["NM", "TX"] },
     { date: "2026-06-21", title: "Ankommen in Dallas", subtitle: "Amarillo → Dallas · Basislager für Spiel 2", states: ["TX"] },
