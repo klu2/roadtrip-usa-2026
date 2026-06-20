@@ -1004,6 +1004,7 @@ footer.foot .ball {
 }
 .photo-strip-thumb {
   flex: 1 1 0;
+  max-width: 72px;
   aspect-ratio: 1 / 1;
   min-width: 0;
   overflow: hidden;
@@ -1027,10 +1028,12 @@ footer.foot .ball {
 
 /* ---------- Rich day card body (overview) ---------- */
 .day-card-body {
+  max-width: 640px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 14px 16px 20px;
+  padding: 16px 18px 24px;
 }
 .match-banner {
   display: flex;
