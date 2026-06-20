@@ -1134,7 +1134,7 @@ footer.foot .ball {
   font-weight: 600;
   letter-spacing: 0.02em;
 }
-.tag-nav-home { text-decoration: none; color: var(--ink); padding: 9px 12px; border-radius: 8px; }
+.tag-nav-home { text-decoration: none; background: var(--ink); color: var(--weiss); padding: 9px 12px; border-radius: 8px; }
 .tag-nav-link.disabled { background: rgba(24, 21, 19, 0.08); color: rgba(24, 21, 19, 0.3); }
 .tag-hero {
   margin: 8px 0 16px;
