@@ -34,11 +34,20 @@ export default function DayCard({ day, last }: { day: DayView; last: boolean }) 
       <div className="day-card-body">
         {isMatch && game && (
           <Link href={detailHref} className="match-banner" prefetch>
-            <span className="match-banner-tag">Spieltag · Gruppe J</span>
+            <span className="match-banner-tag">
+              Spieltag · Gruppe J
+              {game.game.result && <span className="match-banner-final">Endstand</span>}
+            </span>
             <span className="match-banner-teams">
               <span className={"crest flag-" + game.game.homeFlag} />
               {game.game.home}
-              <span className="match-banner-vs">vs</span>
+              {game.game.result ? (
+                <span className="match-banner-score">
+                  {game.game.result.homeScore}:{game.game.result.awayScore}
+                </span>
+              ) : (
+                <span className="match-banner-vs">vs</span>
+              )}
               {game.game.away}
               <span className={"crest flag-" + game.game.awayFlag} />
             </span>

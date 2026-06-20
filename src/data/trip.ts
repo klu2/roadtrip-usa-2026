@@ -34,6 +34,17 @@ export const TRIP: Trip = {
       tournamentName: "San Francisco Bay Area Stadium",
       capacity: 68500,
       reachedOnFoot: true, // walked from the Sunnyvale motel — no drive line
+      result: {
+        homeScore: 3,
+        awayScore: 1,
+        halftime: "1:0",
+        goals: [
+          { minute: "21", scorer: "Romano Schmid", team: "home", assist: "Xaver Schlager" },
+          { minute: "50", scorer: "Ali Olwan", team: "away", assist: "Noor Al Rawabdeh" },
+          { minute: "76", scorer: "Yazan Al Arab", team: "home", ownGoal: true },
+          { minute: "90+12", scorer: "Marko Arnautović", team: "home", penalty: true },
+        ],
+      },
     },
     {
       id: "g2",

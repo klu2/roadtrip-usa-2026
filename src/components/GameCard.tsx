@@ -8,6 +8,9 @@ interface Props {
 
 export default function GameCard({ game, index }: Props) {
   const isAustriaHome = game.home === "Österreich";
+  const result = game.result;
+  const homeWon = result ? result.homeScore > result.awayScore : false;
+  const awayWon = result ? result.awayScore > result.homeScore : false;
   return (
     <article
       className={
@@ -26,12 +29,50 @@ export default function GameCard({ game, index }: Props) {
           <div className={"crest flag-" + game.homeFlag} />
           {game.home}
         </div>
-        <div className="vs">VS</div>
+        <div className="vs">
+          {result ? (
+            <span className="score" aria-label="Endstand">
+              <b className={homeWon ? "win" : ""}>{result.homeScore}</b>
+              <i>:</i>
+              <b className={awayWon ? "win" : ""}>{result.awayScore}</b>
+            </span>
+          ) : (
+            "VS"
+          )}
+        </div>
         <div className={"team" + (!isAustriaHome ? " us" : "")}>
           <div className={"crest flag-" + game.awayFlag} />
           {game.away}
         </div>
       </div>
+      {result ? (
+        <div className="goals-wrap">
+          <div className="goals-head">
+            <span className="goals-label">Torschützen</span>
+            {result.halftime ? (
+              <span className="goals-ht">Halbzeit {result.halftime}</span>
+            ) : null}
+          </div>
+          <ul className="goals">
+            {result.goals.map((g, i) => {
+              const austriaSide = (g.team === "home") === isAustriaHome;
+              return (
+                <li key={i} className={"goal" + (austriaSide ? " us" : "")}>
+                  <span className="min">{g.minute}&prime;</span>
+                  <span className="who">
+                    {g.scorer}
+                    {g.penalty ? <em className="tag">Elfmeter</em> : null}
+                    {g.ownGoal ? <em className="tag">Eigentor</em> : null}
+                    {g.assist ? (
+                      <span className="assist">Vorlage {g.assist}</span>
+                    ) : null}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
       <div className="game-meta">
         <div className="full-row">
           <div className="k">Anpfiff (lokal · Wien)</div>

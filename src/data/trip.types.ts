@@ -13,6 +13,33 @@ export interface TripMeta {
   crew: string[];
 }
 
+/** A single goal in a played match. */
+export interface Goal {
+  /** Minute as shown, e.g. "21" or "90+12" for stoppage time (no apostrophe). */
+  minute: string;
+  scorer: string;
+  /** Which side the goal counts FOR ("home"/"away" mirror Game.home/away). */
+  team: "home" | "away";
+  /** Assist provider (Vorlage), if any. */
+  assist?: string;
+  /** Goal from the penalty spot (Elfmeter). */
+  penalty?: boolean;
+  /** Own goal (Eigentor) — scorer plays for the opposing side. */
+  ownGoal?: boolean;
+}
+
+/** Final result of a played match. Absent until the game is over. */
+export interface GameResult {
+  /** Goals for the home team (Game.home). */
+  homeScore: number;
+  /** Goals for the away team (Game.away). */
+  awayScore: number;
+  /** Goals in chronological order. */
+  goals: Goal[];
+  /** Optional halftime score, e.g. "1:0". */
+  halftime?: string;
+}
+
 export interface Game {
   id: string;
   date: string;
@@ -30,6 +57,8 @@ export interface Game {
   capacity: number;
   /** We walked from the hotel — show the marker, but no drive line to it. */
   reachedOnFoot?: boolean;
+  /** Final result + scorers, once the match has been played. */
+  result?: GameResult;
 }
 
 export interface Hotel {
