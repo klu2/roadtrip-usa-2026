@@ -1,7 +1,7 @@
 import { TRIP } from "@/data/trip";
 import { PHOTOS } from "@/data/photos";
 import { DAILY_KM } from "@/data/route-geometry";
-import { enumerateDays, fmtDate, tripDay, type FormattedDate } from "@/lib/format";
+import { enumerateDays, fmtDate, photoDay, tripDay, type FormattedDate } from "@/lib/format";
 import type {
   Game,
   Flight,
@@ -61,7 +61,8 @@ export function buildDay(iso: string): DayView {
 
   // Photos are grouped by LOCAL capture date (the `time` field), not the
   // UTC-derived id — that's how a traveler thinks of "that day's photos".
-  const photos = PHOTOS.filter((p) => p.time.slice(0, 10) === iso);
+  // `photoDay` folds after-midnight shots (before 3 AM) into the previous day.
+  const photos = PHOTOS.filter((p) => photoDay(p.time) === iso);
 
   const km = kmByDate.get(iso);
   const driveHours = allDrives.reduce((s, d) => s + d.hrs, 0);

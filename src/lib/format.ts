@@ -17,6 +17,20 @@ export const fmtDate = (iso: string): FormattedDate => {
   };
 };
 
+// Editorial day a photo belongs to. A capture before this hour (local wall
+// clock) is folded into the previous day, so late-night shots — e.g. the Vegas
+// helicopter flight just after midnight — stay with the day they belong to.
+const DAY_CUTOFF_HOUR = 3;
+
+// `time` is local "YYYY-MM-DDTHH:MM:SS". Returns the ISO date the photo counts
+// toward. UTC math keeps the rollover deterministic and timezone-proof.
+export const photoDay = (time: string): string => {
+  const hour = Number(time.slice(11, 13));
+  if (hour >= DAY_CUTOFF_HOUR) return time.slice(0, 10);
+  const [y, m, d] = time.slice(0, 10).split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d - 1)).toISOString().slice(0, 10);
+};
+
 export const enumerateDays = (startIso: string, endIso: string): string[] => {
   const start = new Date(startIso + "T12:00:00");
   const end = new Date(endIso + "T12:00:00");
