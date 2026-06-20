@@ -133,6 +133,15 @@ export const TRIP: Trip = {
       notes: "Roadtrip-Stopp",
     },
     {
+      id: "h5b",
+      name: "La Quinta Inn by Wyndham Amarillo Mid-City",
+      city: "Amarillo, TX",
+      coords: [35.1922, -101.8042],
+      checkIn: "2026-06-20",
+      checkOut: "2026-06-21",
+      notes: "Zwischenstopp auf der langen Etappe Santa Fe → Dallas",
+    },
+    {
       id: "h6",
       name: "Comfort Inn Dallas Park Central",
       city: "Dallas, TX",
@@ -179,15 +188,16 @@ export const TRIP: Trip = {
   booking: { airline: "United Airlines", confirmation: "ODJXNY" },
 
   // Drives between consecutive booked hotels.
-  // Long etappes (Santa Fe → Dallas, Dallas → Topeka) span unbooked
-  // overnights — split as needed once those bookings are confirmed.
+  // The Dallas → Topeka etappe still spans an unbooked overnight —
+  // split as needed once that booking is confirmed.
   // `afterGame: true` marks the post-match drive from stadium → night's hotel.
   drives: [
     { id: "d1", date: "2026-06-16", from: "San Francisco, CA", to: "Sunnyvale, CA", km: 70, hrs: 1 },
     { id: "d2", date: "2026-06-17", from: "Sunnyvale, CA", to: "Las Vegas, NV", km: 900, hrs: 9 },
     { id: "d3", date: "2026-06-18", from: "Las Vegas, NV", to: "Flagstaff, AZ", km: 410, hrs: 4 },
     { id: "d4", date: "2026-06-19", from: "Flagstaff, AZ", to: "Santa Fe, NM", km: 580, hrs: 6 },
-    { id: "d5", date: "2026-06-20", from: "Santa Fe, NM", to: "Dallas, TX", km: 960, hrs: 10 },
+    { id: "d5", date: "2026-06-20", from: "Santa Fe, NM", to: "Amarillo, TX", km: 450, hrs: 4.5 },
+    { id: "d5b", date: "2026-06-21", from: "Amarillo, TX", to: "Dallas, TX", km: 580, hrs: 6 },
     { id: "d6", date: "2026-06-24", from: "Dallas, TX", to: "Topeka, KS", km: 790, hrs: 7.5 },
     { id: "d7", date: "2026-06-28", from: "Topeka, KS", to: "Grapevine, TX", km: 870, hrs: 8.5 },
     // Post-match drives: stadium → night's hotel (road distance)
@@ -219,8 +229,8 @@ export const TRIP: Trip = {
     { date: "2026-06-17", title: "Über die Wüste nach Vegas", subtitle: "Nachts im Helikopter über dem Strip", states: ["CA", "NV"] },
     { date: "2026-06-18", title: "Tor zum Grand Canyon", subtitle: "Von Las Vegas nach Flagstaff", states: ["NV", "AZ"] },
     { date: "2026-06-19", title: "Auf der Route 66 nach Santa Fe", subtitle: "Wüstenhighways nach New Mexico", states: ["AZ", "NM"] },
-    { date: "2026-06-20", title: "Langer Ritt nach Texas", subtitle: "Santa Fe → Dallas", states: ["NM", "TX"] },
-    { date: "2026-06-21", title: "Ankommen in Dallas", subtitle: "Basislager für Spiel 2", states: ["TX"] },
+    { date: "2026-06-20", title: "Ins texanische Panhandle", subtitle: "Santa Fe → Amarillo", states: ["NM", "TX"] },
+    { date: "2026-06-21", title: "Ankommen in Dallas", subtitle: "Amarillo → Dallas · Basislager für Spiel 2", states: ["TX"] },
     { date: "2026-06-22", title: "Österreich gegen Messi & Co.", subtitle: "Argentinien – Österreich · AT&T Stadium", states: ["TX"] },
     { date: "2026-06-23", title: "Verschnaufen in Dallas", subtitle: "Ruhetag in Texas", states: ["TX"] },
     { date: "2026-06-24", title: "Quer durch die Great Plains", subtitle: "Dallas → Topeka", states: ["TX", "OK", "KS"] },
