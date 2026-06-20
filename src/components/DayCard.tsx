@@ -12,7 +12,7 @@ const BedIcon = () => (
 );
 
 export default function DayCard({ day, last }: { day: DayView; last: boolean }) {
-  const { iso, dayNum, fmt, info, isMatch, game, hotel, showStayPlaceholder, photos, km, hours } = day;
+  const { iso, dayNum, fmt, info, isMatch, game, hotel, showStayPlaceholder, photos, km } = day;
   const detailHref = `/tag/${dayNum}`;
 
   return (
@@ -53,7 +53,7 @@ export default function DayCard({ day, last }: { day: DayView; last: boolean }) 
           {info?.subtitle && <p className="day-subtitle">{info.subtitle}</p>}
         </div>
 
-        <DayStats states={info?.states} km={km} hours={hours} photoCount={photos.length} compact />
+        <DayStats states={info?.states} km={km} photoCount={photos.length} compact />
 
         {photos.length > 0 && <PhotoStrip photos={photos} href={detailHref} max={5} />}
 

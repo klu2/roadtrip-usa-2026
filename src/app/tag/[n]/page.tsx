@@ -36,7 +36,7 @@ export default async function TagPage({ params }: { params: Promise<{ n: string 
   if (!num) notFound();
 
   const day = buildDay(DAY_ISOS[num - 1]);
-  const { dayNum, fmt, info, isMatch, game, flights, drives, postMatchDrives, hotel, photos, km, hours } = day;
+  const { dayNum, fmt, info, isMatch, game, flights, drives, postMatchDrives, hotel, photos, km } = day;
 
   const hero = photos.find((p) => p.w >= p.h) ?? photos[0];
   const prev = num > 1 ? num - 1 : null;
@@ -67,7 +67,7 @@ export default async function TagPage({ params }: { params: Promise<{ n: string 
         </div>
         <h1 className="tag-title">{info?.title ?? fmt.full}</h1>
         {info?.subtitle && <p className="tag-subtitle">{info.subtitle}</p>}
-        <DayStats states={info?.states} km={km} hours={hours} photoCount={photos.length} />
+        <DayStats states={info?.states} km={km} photoCount={photos.length} />
       </header>
 
       {isMatch && game && (
