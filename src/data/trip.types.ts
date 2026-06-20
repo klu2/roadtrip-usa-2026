@@ -121,6 +121,9 @@ export interface DayInfo {
   subtitle?: string;
   /** USPS state codes the day touches, e.g. ["CA","NV"]. */
   states?: string[];
+  /** Photo id (see src/data/photos.ts) to force as the day's hero image,
+   *  overriding the default first-landscape pick. */
+  hero?: string;
 }
 
 export interface Trip {

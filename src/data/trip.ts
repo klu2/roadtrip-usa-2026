@@ -213,9 +213,9 @@ export const TRIP: Trip = {
   days: [
     { date: "2026-06-12", title: "Anreise über den großen Teich", subtitle: "Wien → Frankfurt → Las Vegas → San Francisco", states: ["CA"] },
     { date: "2026-06-13", title: "San Francisco entdecken", subtitle: "Erster voller Tag in der Bay Area", states: ["CA"] },
-    { date: "2026-06-14", title: "Golden Gate & Fisherman's Wharf", subtitle: "Zu Fuß durch die Stadt", states: ["CA"] },
-    { date: "2026-06-15", title: "Letzter Tag vor dem Anpfiff", subtitle: "Bay-Area-Stimmung tanken", states: ["CA"] },
-    { date: "2026-06-16", title: "Anpfiff in Santa Clara", subtitle: "Österreich – Jordanien · Levi's Stadium", states: ["CA"] },
+    { date: "2026-06-14", title: "Alcatraz — Die Gefängnisinsel", subtitle: "Mit der Fähre raus auf »The Rock«", states: ["CA"], hero: "p-20260614-200425" },
+    { date: "2026-06-15", title: "Rüber nach Oakland", subtitle: "Letzter Tag vor dem Anpfiff", states: ["CA"] },
+    { date: "2026-06-16", title: "Anpfiff in Santa Clara", subtitle: "Österreich – Jordanien · Levi's Stadium", states: ["CA"], hero: "p-20260617-035102" },
     { date: "2026-06-17", title: "Über die Wüste nach Vegas", subtitle: "Nachts im Helikopter über dem Strip", states: ["CA", "NV"] },
     { date: "2026-06-18", title: "Tor zum Grand Canyon", subtitle: "Von Las Vegas nach Flagstaff", states: ["NV", "AZ"] },
     { date: "2026-06-19", title: "Auf der Route 66 nach Santa Fe", subtitle: "Wüstenhighways nach New Mexico", states: ["AZ", "NM"] },

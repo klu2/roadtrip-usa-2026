@@ -38,7 +38,10 @@ export default async function TagPage({ params }: { params: Promise<{ n: string 
   const day = buildDay(DAY_ISOS[num - 1]);
   const { dayNum, fmt, info, isMatch, game, flights, drives, postMatchDrives, hotel, photos, km } = day;
 
-  const hero = photos.find((p) => p.w >= p.h) ?? photos[0];
+  const hero =
+    (info?.hero && photos.find((p) => p.id === info.hero)) ??
+    photos.find((p) => p.w >= p.h) ??
+    photos[0];
   const prev = num > 1 ? num - 1 : null;
   const next = num < DAY_ISOS.length ? num + 1 : null;
 
