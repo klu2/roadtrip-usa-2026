@@ -24,6 +24,12 @@ const write = process.argv.includes("--write");
 // on arrival); timestamped at pickup so it sorts before the first photo.
 const SEED = [
   { iso: "2026-06-16T08:00:00", lat: 37.6173, lon: -122.38365, file: "SEED · SFO Start" },
+  // Amarillo: drove in from the west, then walked downtown all evening. Use the
+  // hotel's own coord as the leg's only Amarillo waypoint (rest is on foot).
+  { iso: "2026-06-20T17:00:00", lat: 35.1922, lon: -101.8042, file: "SEED · La Quinta Amarillo" },
+  // Dallas: reached the hotel ~17:07, then strolled north on foot. Use the
+  // hotel's own coord as the leg's only Dallas waypoint.
+  { iso: "2026-06-21T17:10:00", lat: 32.9254, lon: -96.7713, file: "SEED · Comfort Inn Dallas" },
 ];
 
 // Time windows to drop entirely — GPS captured while NOT driving (on foot),
@@ -53,10 +59,26 @@ const EXCLUDE = [
   // night. Drop every Santa Fe shot after the arrival — the hotel is the only
   // relevant waypoint; the rest are on foot. Ends before the morning departure.
   { from: "2026-06-19T19:15:00", to: "2026-06-20T08:00:00" },
+  // Amarillo: reached town ~16:30, then walked downtown all evening. Drop every
+  // Amarillo shot — the La Quinta SEED is the only waypoint, rest is on foot.
+  { from: "2026-06-20T16:30:00", to: "2026-06-20T23:59:59" },
+  // Dallas: reached the Comfort Inn ~17:07, then strolled north on foot. Drop
+  // every Dallas shot — the hotel SEED is the only waypoint, rest is on foot.
+  { from: "2026-06-21T17:00:00", to: "2026-06-21T23:59:59" },
 ];
 
 // Individual photos to drop by filename — isolated bad fixes (not bursts).
-const EXCLUDE_FILES = new Set([]);
+const EXCLUDE_FILES = new Set([
+  // Stale GPS fix leaving Santa Fe: 35.205,-105.781 at 10:15:02, but the shot
+  // 4 s later is already 2.8 km south — a frozen fix, not where we were.
+  "PXL_20260620_161502302.MP.jpg",
+  // Noisy fixes west of Amarillo that bend the I-40 approach.
+  "PXL_20260620_205740191.MP.jpg", // 35.226,-102.339
+  "PXL_20260620_210550365.jpg",    // 35.225,-102.336
+  "PXL_20260620_210602444.jpg",    // 35.209,-102.171
+  "PXL_20260620_211634714.MP.jpg", // 35.189,-101.978
+  "PXL_20260620_211644709.jpg",    // 35.189,-101.988
+]);
 
 // Photos to force back in even if they fall inside an EXCLUDE window — a
 // specific shot we want as a waypoint (still subject to distance thinning).
