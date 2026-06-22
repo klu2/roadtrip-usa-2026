@@ -78,8 +78,8 @@ export const TRIP: Trip = {
       coords: [39.0489, -94.4839],
       tournamentName: "Kansas City Stadium",
       capacity: 76416,
-      reach: "car", // out-and-back drive from the Topeka base — kept off the through-route
-      // line (so it doesn't cut from the stadium straight south), but draws a spur Topeka ↔ stadium
+      reach: "car", // out-and-back drive from the Independence base — kept off the through-route
+      // line (so it doesn't cut from the stadium straight south), but draws a spur base ↔ stadium
     },
   ],
 
@@ -161,7 +161,7 @@ export const TRIP: Trip = {
       coords: [35.4644, -97.4955],
       checkIn: "2026-06-24",
       checkOut: "2026-06-25",
-      notes: "929 E Reno Avenue, Building B · Zwischenstopp Dallas → Topeka",
+      notes: "929 E Reno Avenue, Building B · Zwischenstopp Dallas → Kansas City",
     },
     {
       id: "h6c",
@@ -170,17 +170,16 @@ export const TRIP: Trip = {
       coords: [36.1526, -95.9895],
       checkIn: "2026-06-25",
       checkOut: "2026-06-26",
-      notes: "400 S Boston Ave · Zwischenstopp Dallas → Topeka",
+      notes: "400 S Boston Ave · Zwischenstopp Dallas → Kansas City",
     },
     {
       id: "h7",
-      name: "Baymont by Wyndham Topeka",
-      city: "Topeka, KS",
-      coords: [39.004, -95.69],
+      name: "Countryside Suites Kansas City Independence I-70 East",
+      city: "Independence, MO",
+      coords: [39.0451, -94.4153],
       checkIn: "2026-06-26",
       checkOut: "2026-06-28",
-      photo: "/hotels/hotel-topeka.jpg",
-      notes: "Basis für Spiel 3 in Kansas City (~90 km)",
+      notes: "4142 South Noland Road · Basis für Spiel 3 in Kansas City (~6 km)",
     },
     {
       id: "h8",
@@ -209,8 +208,9 @@ export const TRIP: Trip = {
   booking: { airline: "United Airlines", confirmation: "ODJXNY" },
 
   // Drives between consecutive booked hotels.
-  // Dallas → Topeka is split over two confirmed overnights (Oklahoma City,
-  // then Tulsa). The Topeka → Grapevine etappe still spans an unbooked night.
+  // Dallas → Independence is split over two confirmed overnights (Oklahoma
+  // City, then Tulsa). The Independence → Grapevine etappe still spans an
+  // unbooked night.
   // `afterGame: true` marks the post-match drive from stadium → night's hotel.
   drives: [
     { id: "d1", date: "2026-06-16", from: "San Francisco, CA", to: "Sunnyvale, CA", km: 70, hrs: 1 },
@@ -221,11 +221,11 @@ export const TRIP: Trip = {
     { id: "d5b", date: "2026-06-21", from: "Amarillo, TX", to: "Dallas, TX", km: 580, hrs: 6 },
     { id: "d6a", date: "2026-06-24", from: "Dallas, TX", to: "Oklahoma City, OK", km: 330, hrs: 3.25 },
     { id: "d6b", date: "2026-06-25", from: "Oklahoma City, OK", to: "Tulsa, OK", km: 170, hrs: 1.75 },
-    { id: "d6c", date: "2026-06-26", from: "Tulsa, OK", to: "Topeka, KS", km: 365, hrs: 3.5 },
-    { id: "d7", date: "2026-06-28", from: "Topeka, KS", to: "Grapevine, TX", km: 870, hrs: 8.5 },
+    { id: "d6c", date: "2026-06-26", from: "Tulsa, OK", to: "Independence, MO", km: 390, hrs: 4 },
+    { id: "d7", date: "2026-06-28", from: "Independence, MO", to: "Grapevine, TX", km: 880, hrs: 8.75 },
     // Post-match drives: stadium → night's hotel (road distance)
     { id: "d8", date: "2026-06-16", from: "Levi's Stadium, Santa Clara, CA", to: "Motel 6 Sunnyvale, CA", km: 8, hrs: 0.25, afterGame: true },
-    { id: "d10", date: "2026-06-27", from: "Arrowhead Stadium, Kansas City, MO", to: "Baymont Topeka, KS", km: 115, hrs: 1.25, afterGame: true },
+    { id: "d10", date: "2026-06-27", from: "Arrowhead Stadium, Kansas City, MO", to: "Countryside Suites, Independence, MO", km: 8, hrs: 0.2, afterGame: true },
   ],
 
   // One-off experiences and bookings that aren't hotels, flights, or drives.
@@ -257,9 +257,9 @@ export const TRIP: Trip = {
     { date: "2026-06-23", title: "Verschnaufen in Dallas", subtitle: "Ruhetag in Texas", states: ["TX"] },
     { date: "2026-06-24", title: "Hinauf nach Oklahoma", subtitle: "Dallas → Oklahoma City", states: ["TX", "OK"] },
     { date: "2026-06-25", title: "Auf der Route 66 nach Tulsa", subtitle: "Oklahoma City → Tulsa", states: ["OK"] },
-    { date: "2026-06-26", title: "Weiter ins Basislager Topeka", subtitle: "Tulsa → Topeka · vor dem letzten Gruppenspiel", states: ["OK", "KS"] },
-    { date: "2026-06-27", title: "Finale in Kansas City", subtitle: "Algerien – Österreich · Arrowhead Stadium", states: ["KS", "MO"] },
-    { date: "2026-06-28", title: "Letzte Etappe nach Texas", subtitle: "Topeka → Grapevine (DFW)", states: ["KS", "OK", "TX"] },
+    { date: "2026-06-26", title: "Weiter ins Basislager Kansas City", subtitle: "Tulsa → Independence · vor dem letzten Gruppenspiel", states: ["OK", "KS", "MO"] },
+    { date: "2026-06-27", title: "Finale in Kansas City", subtitle: "Algerien – Österreich · Arrowhead Stadium", states: ["MO"] },
+    { date: "2026-06-28", title: "Letzte Etappe nach Texas", subtitle: "Independence → Grapevine (DFW)", states: ["MO", "KS", "OK", "TX"] },
     { date: "2026-06-29", title: "Heimreise", subtitle: "Dallas → Houston → Toronto → Wien", states: ["TX"] },
     { date: "2026-06-30", title: "Ankunft in Wien", subtitle: "Zurück in Österreich" },
   ],
