@@ -55,8 +55,14 @@ export interface Game {
   coords: Coords;
   tournamentName: string;
   capacity: number;
-  /** We walked from the hotel — show the marker, but no drive line to it. */
-  reachedOnFoot?: boolean;
+  /**
+   * How we reach the match from the base hotel. Any value keeps the game OFF
+   * the long-haul through-route line (it's a side-excursion, not a waypoint):
+   *   "foot"    — walked (Levi's from the Sunnyvale motel)
+   *   "transit" — public transport (AT&T from Dallas)
+   *   "car"     — drove there and back; draws a dashed spur base ↔ stadium
+   */
+  reach?: "foot" | "transit" | "car";
   /** Final result + scorers, once the match has been played. */
   result?: GameResult;
 }

@@ -80,8 +80,10 @@ Two things get a **marker but no line** (skipped when building either line,
 not when placing markers):
 
 - **Hotels with `checkIn` before `ROADTRIP_START`** — the pre-trip SF base.
-- **Games with `reachedOnFoot: true`** (set in `src/data/trip.ts`) — e.g.
-  Levi's, which we walked to from the motel.
+- **Games with a `reach` set** (`"foot" | "transit" | "car"`, in
+  `src/data/trip.ts`) — side-excursions from a base hotel, kept off the
+  long-haul route line. `reach: "car"` additionally draws a dashed spur from
+  the base hotel to the stadium (e.g. Topeka ↔ Arrowhead).
 
 `DAILY_KM` / `TOTAL_KM` from the same file are the real driven kilometers,
 available for a stats section (not yet rendered).
@@ -109,7 +111,8 @@ When a new leg looks wrong, the fix is almost always a tunable above:
 - route wandering around a stop/stadium → add an **`EXCLUDE`** window for
   the on-foot period;
 - too jagged / too sparse → change the **`minKm`** spacing;
-- new walked-to stadium → set **`reachedOnFoot`** on that game in `trip.ts`.
+- new excursion stadium → set **`reach`** (`"foot"`/`"transit"`/`"car"`) on
+  that game in `trip.ts`.
 
 `gps-raw.json` is committed as a cache so the track can be rebuilt without
 the photos (which are not in the repo) — but a fresh `extract-gps.mjs` run is

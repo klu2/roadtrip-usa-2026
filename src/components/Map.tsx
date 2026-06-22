@@ -97,29 +97,53 @@ export default function TripMap({ interactive = false, className, focusId, focus
         if (key > lastTrackKey) future.push({ coords: h.coords, key });
       });
       TRIP.games.forEach((g) => {
-        if (g.reachedOnFoot) return;
+        // Games with a `reach` are side-excursions from a base hotel — keep
+        // them off the long-haul through-route line.
+        if (g.reach) return;
         const t = g.kickoff.match(/(\d{1,2}):(\d{2})/);
         const key = localKey(g.date, t ? `${t[1]}:${t[2]}` : "20:00");
         if (key > lastTrackKey) future.push({ coords: g.coords, key });
       });
       future.sort((a, b) => a.key - b.key);
 
+      const dashed = {
+        color: "#181513",
+        weight: 2.5,
+        opacity: 0.55,
+        dashArray: "6 6",
+        lineCap: "round" as const,
+        lineJoin: "round" as const,
+      };
+
       const plannedLatLngs = [
         ...(ROUTE_GEOMETRY.length ? [ROUTE_GEOMETRY.at(-1)!] : []),
         ...future.map((f) => f.coords),
       ];
       if (plannedLatLngs.length > 1) {
-        L.polyline(plannedLatLngs, {
-          color: "#181513",
-          weight: 2.5,
-          opacity: 0.55,
-          dashArray: "6 6",
-          lineCap: "round",
-          lineJoin: "round",
-        }).addTo(map);
+        L.polyline(plannedLatLngs, dashed).addTo(map);
       }
 
-      const routeLatLngs = [...ROUTE_GEOMETRY, ...future.map((f) => f.coords)];
+      // Car-reached matches: a dashed spur from the base hotel (the one slept
+      // in on match day) to the stadium — the out-and-back drive to the game.
+      // Only while still upcoming (no photos yet); the driven line takes over after.
+      TRIP.games.forEach((g) => {
+        if (g.reach !== "car") return;
+        const t = g.kickoff.match(/(\d{1,2}):(\d{2})/);
+        const key = localKey(g.date, t ? `${t[1]}:${t[2]}` : "20:00");
+        if (key <= lastTrackKey) return;
+        const base = TRIP.hotels.find(
+          (h) => h.checkIn <= g.date && g.date < h.checkOut
+        );
+        if (base) L.polyline([base.coords, g.coords], dashed).addTo(map);
+      });
+
+      // Bounds: the driven route + upcoming anchors + every stadium (game
+      // markers are always shown, even excursions kept off the route line).
+      const routeLatLngs = [
+        ...ROUTE_GEOMETRY,
+        ...future.map((f) => f.coords),
+        ...TRIP.games.map((g) => g.coords),
+      ];
 
       // Hotel markers — badge shows trip-night number(s), e.g. "1-4" or "6"
       TRIP.hotels.forEach((h) => {

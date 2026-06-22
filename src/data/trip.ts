@@ -33,7 +33,7 @@ export const TRIP: Trip = {
       coords: [37.403, -121.97],
       tournamentName: "San Francisco Bay Area Stadium",
       capacity: 68500,
-      reachedOnFoot: true, // walked from the Sunnyvale motel — no drive line
+      reach: "foot", // walked from the Sunnyvale motel — no drive line
       result: {
         homeScore: 3,
         awayScore: 1,
@@ -61,6 +61,7 @@ export const TRIP: Trip = {
       coords: [32.7473, -97.0945],
       tournamentName: "Dallas Stadium",
       capacity: 80000,
+      reach: "transit", // public transport from Dallas — no car-drive line
     },
     {
       id: "g3",
@@ -77,6 +78,8 @@ export const TRIP: Trip = {
       coords: [39.0489, -94.4839],
       tournamentName: "Kansas City Stadium",
       capacity: 76416,
+      reach: "car", // out-and-back drive from the Topeka base — kept off the through-route
+      // line (so it doesn't cut from the stadium straight south), but draws a spur Topeka ↔ stadium
     },
   ],
 
@@ -152,6 +155,24 @@ export const TRIP: Trip = {
       notes: "Spieltag Argentinien vs Österreich (AT&T Stadium)",
     },
     {
+      id: "h6b",
+      name: "MainStay Suites Bricktown – near Medical Center",
+      city: "Oklahoma City, OK",
+      coords: [35.4644, -97.4955],
+      checkIn: "2026-06-24",
+      checkOut: "2026-06-25",
+      notes: "929 E Reno Avenue, Building B · Zwischenstopp Dallas → Topeka",
+    },
+    {
+      id: "h6c",
+      name: "Hyatt Place Tulsa/Downtown",
+      city: "Tulsa, OK",
+      coords: [36.1526, -95.9895],
+      checkIn: "2026-06-25",
+      checkOut: "2026-06-26",
+      notes: "400 S Boston Ave · Zwischenstopp Dallas → Topeka",
+    },
+    {
       id: "h7",
       name: "Baymont by Wyndham Topeka",
       city: "Topeka, KS",
@@ -188,8 +209,8 @@ export const TRIP: Trip = {
   booking: { airline: "United Airlines", confirmation: "ODJXNY" },
 
   // Drives between consecutive booked hotels.
-  // The Dallas → Topeka etappe still spans an unbooked overnight —
-  // split as needed once that booking is confirmed.
+  // Dallas → Topeka is split over two confirmed overnights (Oklahoma City,
+  // then Tulsa). The Topeka → Grapevine etappe still spans an unbooked night.
   // `afterGame: true` marks the post-match drive from stadium → night's hotel.
   drives: [
     { id: "d1", date: "2026-06-16", from: "San Francisco, CA", to: "Sunnyvale, CA", km: 70, hrs: 1 },
@@ -198,11 +219,12 @@ export const TRIP: Trip = {
     { id: "d4", date: "2026-06-19", from: "Flagstaff, AZ", to: "Santa Fe, NM", km: 580, hrs: 6 },
     { id: "d5", date: "2026-06-20", from: "Santa Fe, NM", to: "Amarillo, TX", km: 450, hrs: 4.5 },
     { id: "d5b", date: "2026-06-21", from: "Amarillo, TX", to: "Dallas, TX", km: 580, hrs: 6 },
-    { id: "d6", date: "2026-06-24", from: "Dallas, TX", to: "Topeka, KS", km: 790, hrs: 7.5 },
+    { id: "d6a", date: "2026-06-24", from: "Dallas, TX", to: "Oklahoma City, OK", km: 330, hrs: 3.25 },
+    { id: "d6b", date: "2026-06-25", from: "Oklahoma City, OK", to: "Tulsa, OK", km: 170, hrs: 1.75 },
+    { id: "d6c", date: "2026-06-26", from: "Tulsa, OK", to: "Topeka, KS", km: 365, hrs: 3.5 },
     { id: "d7", date: "2026-06-28", from: "Topeka, KS", to: "Grapevine, TX", km: 870, hrs: 8.5 },
     // Post-match drives: stadium → night's hotel (road distance)
     { id: "d8", date: "2026-06-16", from: "Levi's Stadium, Santa Clara, CA", to: "Motel 6 Sunnyvale, CA", km: 8, hrs: 0.25, afterGame: true },
-    { id: "d9", date: "2026-06-22", from: "AT&T Stadium, Arlington, TX", to: "Comfort Inn Dallas Park Central", km: 45, hrs: 0.7, afterGame: true },
     { id: "d10", date: "2026-06-27", from: "Arrowhead Stadium, Kansas City, MO", to: "Baymont Topeka, KS", km: 115, hrs: 1.25, afterGame: true },
   ],
 
@@ -233,9 +255,9 @@ export const TRIP: Trip = {
     { date: "2026-06-21", title: "Ankommen in Dallas", subtitle: "Amarillo → Dallas · Basislager für Spiel 2", states: ["TX"], hero: "p-20260621-230222" },
     { date: "2026-06-22", title: "Österreich gegen Messi & Co.", subtitle: "Argentinien – Österreich · AT&T Stadium", states: ["TX"] },
     { date: "2026-06-23", title: "Verschnaufen in Dallas", subtitle: "Ruhetag in Texas", states: ["TX"] },
-    { date: "2026-06-24", title: "Quer durch die Great Plains", subtitle: "Dallas → Topeka", states: ["TX", "OK", "KS"] },
-    { date: "2026-06-25", title: "Unterwegs in Kansas", subtitle: "Etappe noch offen", states: ["KS"] },
-    { date: "2026-06-26", title: "Basislager Topeka", subtitle: "Vor dem letzten Gruppenspiel", states: ["KS"] },
+    { date: "2026-06-24", title: "Hinauf nach Oklahoma", subtitle: "Dallas → Oklahoma City", states: ["TX", "OK"] },
+    { date: "2026-06-25", title: "Auf der Route 66 nach Tulsa", subtitle: "Oklahoma City → Tulsa", states: ["OK"] },
+    { date: "2026-06-26", title: "Weiter ins Basislager Topeka", subtitle: "Tulsa → Topeka · vor dem letzten Gruppenspiel", states: ["OK", "KS"] },
     { date: "2026-06-27", title: "Finale in Kansas City", subtitle: "Algerien – Österreich · Arrowhead Stadium", states: ["KS", "MO"] },
     { date: "2026-06-28", title: "Letzte Etappe nach Texas", subtitle: "Topeka → Grapevine (DFW)", states: ["KS", "OK", "TX"] },
     { date: "2026-06-29", title: "Heimreise", subtitle: "Dallas → Houston → Toronto → Wien", states: ["TX"] },
