@@ -65,6 +65,9 @@ const EXCLUDE = [
   // Dallas: reached the Comfort Inn ~17:07, then strolled north on foot. Drop
   // every Dallas shot — the hotel SEED is the only waypoint, rest is on foot.
   { from: "2026-06-21T17:00:00", to: "2026-06-21T23:59:59" },
+  // Dallas: June 22 match day (public transit to the stadium) and June 23 rest day.
+  // Drop all GPS in Dallas proper; the hotel SEED is the only relevant waypoint.
+  { from: "2026-06-22T00:00:00", to: "2026-06-24T09:00:00" },
 ];
 
 // Individual photos to drop by filename — isolated bad fixes (not bursts).

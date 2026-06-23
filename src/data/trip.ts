@@ -62,6 +62,14 @@ export const TRIP: Trip = {
       tournamentName: "Dallas Stadium",
       capacity: 80000,
       reach: "transit", // public transport from Dallas — no car-drive line
+      result: {
+        homeScore: 2,
+        awayScore: 0,
+        goals: [
+          { minute: "38", scorer: "Lionel Messi", team: "home" },
+          { minute: "90+5", scorer: "Lionel Messi", team: "home" },
+        ],
+      },
     },
     {
       id: "g3",
@@ -253,7 +261,7 @@ export const TRIP: Trip = {
     { date: "2026-06-19", title: "Auf der Route 66 nach Santa Fe", subtitle: "Wüstenhighways nach New Mexico", states: ["AZ", "NM"], hero: "p-20260620-014519" },
     { date: "2026-06-20", title: "Is This the Way to Amarillo?", subtitle: "Santa Fe → Amarillo", states: ["NM", "TX"] },
     { date: "2026-06-21", title: "Ankommen in Dallas", subtitle: "Amarillo → Dallas · Basislager für Spiel 2", states: ["TX"], hero: "p-20260621-230222" },
-    { date: "2026-06-22", title: "Österreich gegen Messi & Co.", subtitle: "Argentinien – Österreich · AT&T Stadium", states: ["TX"] },
+    { date: "2026-06-22", title: "Österreich gegen Messi & Co.", subtitle: "Argentinien – Österreich · AT&T Stadium", states: ["TX"], hero: "p-20260622-191610" },
     { date: "2026-06-23", title: "Verschnaufen in Dallas", subtitle: "Ruhetag in Texas", states: ["TX"] },
     { date: "2026-06-24", title: "Hinauf nach Oklahoma", subtitle: "Dallas → Oklahoma City", states: ["TX", "OK"] },
     { date: "2026-06-25", title: "Auf der Route 66 nach Tulsa", subtitle: "Oklahoma City → Tulsa", states: ["OK"] },
