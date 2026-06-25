@@ -251,6 +251,56 @@ export const TRIP: Trip = {
       color: "#1d4ed8",
       note: "Pier 33 → »The Rock«",
     },
+    // --- Oakland-Tag (15. Juni): Tram + BART hin, Fähre zurück ---
+    {
+      id: "t2",
+      name: "Muni Metro N-Judah",
+      mode: "tram",
+      // Ocean Beach (Judah & La Playa, nahe Hotel) → Judah St → Sunset-Tunnel
+      // → Duboce → Market-Street-Tunnel → Embarcadero (Umstieg auf BART).
+      path: [
+        [37.7603, -122.5089],
+        [37.7616, -122.471],
+        [37.7659, -122.449],
+        [37.7693, -122.4327],
+        [37.7741, -122.4205],
+        [37.7844, -122.4078],
+        [37.7928, -122.397],
+      ],
+      color: "#1d4ed8",
+      note: "Ocean Beach → Embarcadero",
+    },
+    {
+      id: "t3",
+      name: "BART Transbay",
+      mode: "rail",
+      // Embarcadero → Transbay Tube (unter der Bucht) → West Oakland →
+      // 12th St Oakland City Center, von wo aus es zu Fuß nach Jack London geht.
+      path: [
+        [37.7928, -122.397],
+        [37.8048, -122.2948],
+        [37.8038, -122.2715],
+      ],
+      color: "#1d4ed8",
+      note: "Embarcadero → Oakland, unter der Bucht",
+    },
+    {
+      id: "t4",
+      name: "Oakland-Fähre",
+      mode: "ferry",
+      // Heimweg: Jack London Square → durch die Hafeneinfahrt hinaus → an
+      // Yerba Buena Island vorbei unter der Bay Bridge durch → Ferry Building.
+      // Der mittlere Wegpunkt ist die GPS-Position des Bordfotos unter der
+      // Brücke (p-20260616-002633: »Yerba Buena Island & Bay Bridge«).
+      path: [
+        [37.7941, -122.2779],
+        [37.792, -122.305],
+        [37.800925, -122.363942],
+        [37.7952, -122.394],
+      ],
+      color: "#1d4ed8",
+      note: "Jack London Square → Ferry Building",
+    },
   ],
 
   // One-off experiences and bookings that aren't hotels, flights, or drives.
