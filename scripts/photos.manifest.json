@@ -56,6 +56,20 @@
     "caption": "Anflug San Francisco Bay"
   },
   {
+    "id": "p-20260613-024324",
+    "file": "PXL_20260613_024324090.MP.jpg",
+    "coords": [
+      37.5699749,
+      -122.2634637
+    ],
+    "time": "2026-06-12T19:43:24",
+    "thumb": "/photos/p-20260613-024324-thumb.jpg",
+    "full": "/photos/p-20260613-024324.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Anflug auf San Francisco über die San Mateo–Hayward Bridge"
+  },
+  {
     "id": "p-20260613-160124",
     "file": "PXL_20260613_160124249.MP.jpg",
     "coords": [
@@ -68,6 +82,20 @@
     "w": 1600,
     "h": 1205,
     "caption": "Pazifik-Strand San Francisco"
+  },
+  {
+    "id": "p-20260613-175723",
+    "file": "PXL_20260613_175723238.MP.jpg",
+    "coords": [
+      37.779742,
+      -122.41445
+    ],
+    "time": "2026-06-13T10:57:23",
+    "thumb": "/photos/p-20260613-175723-thumb.jpg",
+    "full": "/photos/p-20260613-175723.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Das Beaux-Arts-Bundesgebäude an der United Nations Plaza"
   },
   {
     "id": "p-20260613-180353",
@@ -84,6 +112,34 @@
     "caption": "San Francisco City Hall"
   },
   {
+    "id": "p-20260613-180612",
+    "file": "PXL_20260613_180612828.jpg",
+    "coords": [
+      37.780236,
+      -122.417339
+    ],
+    "time": "2026-06-13T11:06:12",
+    "thumb": "/photos/p-20260613-180612-thumb.jpg",
+    "full": "/photos/p-20260613-180612.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Das Asian Art Museum am Civic Center"
+  },
+  {
+    "id": "p-20260613-190107",
+    "file": "PXL_20260613_190107688.MP.jpg",
+    "coords": [
+      37.787378,
+      -122.408381
+    ],
+    "time": "2026-06-13T12:01:07",
+    "thumb": "/photos/p-20260613-190107-thumb.jpg",
+    "full": "/photos/p-20260613-190107.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Union Square mit Palmen, dahinter Tiffany & Co."
+  },
+  {
     "id": "p-20260613-190308",
     "file": "PXL_20260613_190308327.MP.jpg",
     "coords": [
@@ -96,6 +152,34 @@
     "w": 1600,
     "h": 1205,
     "caption": "Das berühmte Cable Car"
+  },
+  {
+    "id": "p-20260613-190331",
+    "file": "PXL_20260613_190331039.jpg",
+    "coords": [
+      37.787281,
+      -122.408247
+    ],
+    "time": "2026-06-13T12:03:31",
+    "thumb": "/photos/p-20260613-190331-thumb.jpg",
+    "full": "/photos/p-20260613-190331.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Cable-Car-Gleise die Powell Street hinauf am Union Square"
+  },
+  {
+    "id": "p-20260613-193616",
+    "file": "PXL_20260613_193616330.TS-000.jpg",
+    "coords": [
+      37.789389,
+      -122.408639
+    ],
+    "time": "2026-06-13T12:36:16",
+    "thumb": "/photos/p-20260613-193616-thumb.jpg",
+    "full": "/photos/p-20260613-193616.jpg",
+    "w": 1205,
+    "h": 1600,
+    "caption": "An Bord des Powell-Street-Cable-Cars"
   },
   {
     "id": "p-20260613-200659",
