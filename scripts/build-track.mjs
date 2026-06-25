@@ -30,6 +30,9 @@ const SEED = [
   // Dallas: reached the hotel ~17:07, then strolled north on foot. Use the
   // hotel's own coord as the leg's only Dallas waypoint.
   { iso: "2026-06-21T17:10:00", lat: 32.9254, lon: -96.7713, file: "SEED · Comfort Inn Dallas" },
+  // Oklahoma City: reached the MainStay Suites ~17:30, then on foot/transit.
+  // Use the hotel's own coord as the leg's only OKC waypoint.
+  { iso: "2026-06-24T17:30:00", lat: 35.4644, lon: -97.4955, file: "SEED · MainStay Suites OKC" },
 ];
 
 // Time windows to drop entirely — GPS captured while NOT driving (on foot),
@@ -68,6 +71,9 @@ const EXCLUDE = [
   // Dallas: June 22 match day (public transit to the stadium) and June 23 rest day.
   // Drop all GPS in Dallas proper; the hotel SEED is the only relevant waypoint.
   { from: "2026-06-22T00:00:00", to: "2026-06-24T09:00:00" },
+  // Oklahoma City: reached the MainStay Suites ~17:30, then on foot. Drop every
+  // OKC shot — the hotel SEED is the only waypoint, rest is on foot/transit.
+  { from: "2026-06-24T17:30:00", to: "2026-06-25T09:00:00" },
 ];
 
 // Individual photos to drop by filename — isolated bad fixes (not bursts).
