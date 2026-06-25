@@ -3,7 +3,7 @@
 import type { TripPhoto } from "./trip.types";
 
 export const PHOTOS: TripPhoto[] = [
-  { id: "p-20260613-010216", coords: [36.082794, -115.139356], time: "2026-06-12T18:02:16", thumb: "/photos/p-20260613-010216-thumb.jpg", full: "/photos/p-20260613-010216.jpg", w: 1600, h: 1200 },
+  { id: "p-20260613-010216", coords: [36.082794, -115.139356], time: "2026-06-12T18:02:16", thumb: "/photos/p-20260613-010216-thumb.jpg", full: "/photos/p-20260613-010216.jpg", w: 1600, h: 1200, caption: "Landung am Las Vegas Airport" },
   { id: "p-20260613-010253", coords: [36.082794, -115.139356], time: "2026-06-12T18:02:53", thumb: "/photos/p-20260613-010253-thumb.jpg", full: "/photos/p-20260613-010253.jpg", w: 1600, h: 1205 },
   { id: "p-20260613-021350", coords: [36.45, -116.85], time: "2026-06-12T19:13:50", thumb: "/photos/p-20260613-021350-thumb.jpg", full: "/photos/p-20260613-021350.jpg", w: 1205, h: 1600 },
   { id: "p-20260613-024006", coords: [37.475, -122.075], time: "2026-06-12T19:40:06", thumb: "/photos/p-20260613-024006-thumb.jpg", full: "/photos/p-20260613-024006.jpg", w: 1205, h: 1600 },
