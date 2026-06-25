@@ -301,6 +301,49 @@ export const TRIP: Trip = {
       color: "#1d4ed8",
       note: "Jack London Square → Ferry Building",
     },
+    // --- Spieltag Argentinien (22. Juni): Anfahrt zum AT&T Stadium ---
+    {
+      id: "t5",
+      name: "DART Orange Line",
+      mode: "rail",
+      // S-Bahn nahe der Unterkunft (Forest Lane) nach Süden durch die Innen-
+      // stadt bis zur Victory Station (Umstieg auf die TRE).
+      path: [
+        [32.9106, -96.7659],
+        [32.8369, -96.7847],
+        [32.7867, -96.7995],
+        [32.7905, -96.8103],
+      ],
+      color: "#1d4ed8",
+      note: "Forest Lane → Victory Station",
+    },
+    {
+      id: "t6",
+      name: "TRE Trinity Railway Express",
+      mode: "rail",
+      // Von Victory mit dem Regionalzug nach Westen bis CentrePort/DFW Airport.
+      path: [
+        [32.7905, -96.8103],
+        [32.7976, -96.8285],
+        [32.8413, -96.9637],
+        [32.817, -97.0526],
+      ],
+      color: "#1d4ed8",
+      note: "Victory Station → CentrePort",
+    },
+    {
+      id: "t7",
+      name: "Stadion-Shuttle",
+      mode: "bus",
+      // Shuttle-Bus von CentrePort südwärts (TX-360) zum AT&T Stadium.
+      path: [
+        [32.817, -97.0526],
+        [32.76, -97.0545],
+        [32.7473, -97.0945],
+      ],
+      color: "#1d4ed8",
+      note: "CentrePort → AT&T Stadium",
+    },
   ],
 
   // One-off experiences and bookings that aren't hotels, flights, or drives.
