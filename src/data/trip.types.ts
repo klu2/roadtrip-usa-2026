@@ -118,6 +118,26 @@ export interface Booking {
   confirmation: string;
 }
 
+/**
+ * A public-transport line drawn on the map (ferry, bus, rail, cable car …).
+ * Unlike the road trip's through-route, these are local lines we ride on a
+ * given day — rendered as a coloured dashed polyline through `path`, off the
+ * driving line. Add more by appending to `TRIP.transit`.
+ */
+export interface TransitLine {
+  id: string;
+  /** Display name, e.g. »Alcatraz-Fähre«. */
+  name: string;
+  /** Mode of transport — drives the default colour and the popup label. */
+  mode: "ferry" | "bus" | "rail" | "tram" | "cablecar";
+  /** Ordered waypoints [lat, lon] the line runs through (≥ 2 points). */
+  path: Coords[];
+  /** Stroke colour (any CSS colour). Defaults to blue when omitted. */
+  color?: string;
+  /** Optional one-line detail shown in the marker popup. */
+  note?: string;
+}
+
 export interface DayInfo {
   /** ISO date YYYY-MM-DD — the key for this day. */
   date: string;
@@ -141,6 +161,8 @@ export interface Trip {
   activities: Activity[];
   booking: Booking;
   days: DayInfo[];
+  /** Local public-transport lines (ferries, buses …) drawn on the map. */
+  transit: TransitLine[];
 }
 
 export interface TripPhoto {

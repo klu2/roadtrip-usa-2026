@@ -137,6 +137,47 @@ export default function TripMap({ interactive = false, className, focusId, focus
         if (base) L.polyline([base.coords, g.coords], dashed).addTo(map);
       });
 
+      // Local public-transport lines (ferry, bus, …) — coloured dashed
+      // polylines, off the driving route. Small dots mark each endpoint; the
+      // whole line carries a popup with the line name.
+      TRIP.transit.forEach((line) => {
+        if (line.path.length < 2) return;
+        const color = line.color || "#1d4ed8";
+        const modeLabel: Record<string, string> = {
+          ferry: "Fähre",
+          bus: "Bus",
+          rail: "Bahn",
+          tram: "Tram",
+          cablecar: "Cable Car",
+        };
+        const popup =
+          `<div class="pop-title">${line.name}</div>` +
+          `<div class="pop-sub">${modeLabel[line.mode] || line.mode}` +
+          `${line.note ? ` · ${line.note}` : ""}</div>`;
+        L.polyline(line.path, {
+          color,
+          weight: 3,
+          opacity: 0.9,
+          dashArray: "5 7",
+          lineCap: "round",
+          lineJoin: "round",
+        })
+          .addTo(map)
+          .bindPopup(popup);
+        const ends = [line.path[0], line.path[line.path.length - 1]];
+        ends.forEach((c) => {
+          L.circleMarker(c, {
+            radius: 4,
+            color,
+            weight: 2,
+            fillColor: "#fff",
+            fillOpacity: 1,
+          })
+            .addTo(map)
+            .bindPopup(popup);
+        });
+      });
+
       // Bounds: the driven route + upcoming anchors + every stadium (game
       // markers are always shown, even excursions kept off the route line).
       const routeLatLngs = [

@@ -236,6 +236,23 @@ export const TRIP: Trip = {
     { id: "d10", date: "2026-06-27", from: "Arrowhead Stadium, Kansas City, MO", to: "Countryside Suites, Independence, MO", km: 8, hrs: 0.2, afterGame: true },
   ],
 
+  // Local public-transport lines drawn on the map (dashed, coloured). These
+  // are rides on the trip, not part of the driving route — append more here.
+  transit: [
+    {
+      id: "t1",
+      name: "Alcatraz-Fähre",
+      mode: "ferry",
+      // Pier 33 (Alcatraz Landing) → Alcatraz Island ferry dock (SE side).
+      path: [
+        [37.8069, -122.4049],
+        [37.8262, -122.4214],
+      ],
+      color: "#1d4ed8",
+      note: "Pier 33 → »The Rock«",
+    },
+  ],
+
   // One-off experiences and bookings that aren't hotels, flights, or drives.
   activities: [
     {
