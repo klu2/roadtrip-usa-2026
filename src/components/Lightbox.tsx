@@ -9,8 +9,11 @@ const ZOOMABLE_SELECTOR = ".stay-photo, .stadium-photo, .event-photo";
 export default function Lightbox() {
   const [slides, setSlides] = useState<Slide[]>([]);
   const [index, setIndex] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   const open = slides.length > 0;
   const touchX = useRef<number | null>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const preloaded = useRef<Set<string>>(new Set());
 
   const close = () => setSlides([]);
 
@@ -57,6 +60,33 @@ export default function Lightbox() {
     };
   }, [open, slides.length]);
 
+  // Reset the loaded flag when the visible slide changes; if the browser
+  // already has the image cached, it is "complete" synchronously so we skip
+  // the loading state entirely (and the onLoad event may not fire again).
+  const src = open ? slides[index]?.src : undefined;
+  useEffect(() => {
+    if (!src) return;
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) setLoaded(true);
+    else setLoaded(false);
+  }, [src]);
+
+  // Preload the neighbouring slides so the next/prev image is already in the
+  // browser cache by the time the user navigates to it.
+  useEffect(() => {
+    if (!open) return;
+    const n = slides.length;
+    const preload = (i: number) => {
+      const url = slides[((i % n) + n) % n]?.src;
+      if (!url || preloaded.current.has(url)) return;
+      preloaded.current.add(url);
+      const img = new Image();
+      img.src = url;
+    };
+    preload(index + 1);
+    preload(index - 1);
+  }, [open, index, slides]);
+
   if (!open) return null;
   const s = slides[index];
   const multi = slides.length > 1;
@@ -81,6 +111,9 @@ export default function Lightbox() {
         touchX.current = null;
       }}
     >
+      <div className={`lb-progress${loaded ? " done" : ""}`} aria-hidden="true">
+        <span />
+      </div>
       <button type="button" className="lb-close" aria-label="Schließen" onClick={close}>
         ×
       </button>
@@ -95,9 +128,15 @@ export default function Lightbox() {
         </button>
       )}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={s.src} alt={s.alt || ""} />
+      <img
+        ref={imgRef}
+        src={s.src}
+        alt={s.alt || ""}
+        className={loaded ? "lb-loaded" : "lb-loading"}
+        onLoad={() => setLoaded(true)}
+      />
       {(s.caption || multi) && (
-        <div className="lb-caption">
+        <div className={`lb-caption${loaded ? "" : " pending"}`}>
           {s.caption && <span>{s.caption}</span>}
           {multi && <span className="lb-count">{index + 1} / {slides.length}</span>}
         </div>

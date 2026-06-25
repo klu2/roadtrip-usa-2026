@@ -951,6 +951,47 @@ body.lightbox-open { overflow: hidden; }
   object-fit: contain;
   border: 2px solid #fff;
   box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.6);
+  transition: opacity 220ms ease-out;
+}
+.lightbox img.lb-loading { opacity: 0; }
+.lightbox img.lb-loaded { opacity: 1; }
+
+/* Indeterminate loading bar across the top while the image is fetched. */
+.lb-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 2;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 240ms ease-out 120ms;
+}
+.lb-progress span {
+  display: block;
+  height: 100%;
+  width: 40%;
+  background: var(--rot);
+  border-radius: 0 2px 2px 0;
+  animation: lb-progress-slide 1100ms ease-in-out infinite;
+}
+.lb-progress.done {
+  opacity: 0;
+}
+.lb-progress.done span {
+  width: 100%;
+  animation: none;
+  transition: width 200ms ease-out;
+}
+@keyframes lb-progress-slide {
+  0%   { transform: translateX(-100%); width: 35%; }
+  50%  { width: 55%; }
+  100% { transform: translateX(280%); width: 35%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lb-progress span { animation: none; width: 100%; opacity: 0.5; }
+  .lightbox img { transition: none; }
 }
 .lb-close {
   position: absolute;
@@ -1009,7 +1050,11 @@ body.lightbox-open { overflow: hidden; }
   color: #fff;
   font-family: var(--font-body);
   font-size: 14px;
+  transition: opacity 200ms ease-out;
 }
+/* Dim the caption until its image is on screen, so the text never sits
+   alone over a blank frame while the next photo is still loading. */
+.lb-caption.pending { opacity: 0.35; }
 .lb-count {
   font-family: var(--font-mono);
   font-size: 11px;
