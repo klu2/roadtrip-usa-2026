@@ -4,9 +4,9 @@ import type { TripPhoto } from "./trip.types";
 
 export const PHOTOS: TripPhoto[] = [
   { id: "p-20260613-010216", coords: [36.082794, -115.139356], time: "2026-06-12T18:02:16", thumb: "/photos/p-20260613-010216-thumb.jpg", full: "/photos/p-20260613-010216.jpg", w: 1600, h: 1200, caption: "Landung am Las Vegas Airport" },
-  { id: "p-20260613-010253", coords: [36.082794, -115.139356], time: "2026-06-12T18:02:53", thumb: "/photos/p-20260613-010253-thumb.jpg", full: "/photos/p-20260613-010253.jpg", w: 1600, h: 1205 },
-  { id: "p-20260613-021350", coords: [36.45, -116.85], time: "2026-06-12T19:13:50", thumb: "/photos/p-20260613-021350-thumb.jpg", full: "/photos/p-20260613-021350.jpg", w: 1205, h: 1600 },
-  { id: "p-20260613-024006", coords: [37.475, -122.075], time: "2026-06-12T19:40:06", thumb: "/photos/p-20260613-024006-thumb.jpg", full: "/photos/p-20260613-024006.jpg", w: 1205, h: 1600 },
+  { id: "p-20260613-010253", coords: [36.082794, -115.139356], time: "2026-06-12T18:02:53", thumb: "/photos/p-20260613-010253-thumb.jpg", full: "/photos/p-20260613-010253.jpg", w: 1600, h: 1205, caption: "Vorgeschmack auf Vegas" },
+  { id: "p-20260613-021350", coords: [36.45, -116.85], time: "2026-06-12T19:13:50", thumb: "/photos/p-20260613-021350-thumb.jpg", full: "/photos/p-20260613-021350.jpg", w: 1205, h: 1600, caption: "Flug über Nevada" },
+  { id: "p-20260613-024006", coords: [37.475, -122.075], time: "2026-06-12T19:40:06", thumb: "/photos/p-20260613-024006-thumb.jpg", full: "/photos/p-20260613-024006.jpg", w: 1205, h: 1600, caption: "Anflug San Francisco Bay" },
   { id: "p-20260613-160124", coords: [37.763461, -122.509831], time: "2026-06-13T09:01:24", thumb: "/photos/p-20260613-160124-thumb.jpg", full: "/photos/p-20260613-160124.jpg", w: 1600, h: 1205 },
   { id: "p-20260613-180353", coords: [37.779556, -122.416939], time: "2026-06-13T11:03:53", thumb: "/photos/p-20260613-180353-thumb.jpg", full: "/photos/p-20260613-180353.jpg", w: 1600, h: 1205 },
   { id: "p-20260613-190308", coords: [37.787281, -122.408247], time: "2026-06-13T12:03:08", thumb: "/photos/p-20260613-190308-thumb.jpg", full: "/photos/p-20260613-190308.jpg", w: 1600, h: 1205 },
