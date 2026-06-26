@@ -2156,7 +2156,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-162754.jpg",
     w: 1205,
     h: 1600,
-    caption: ""
+    caption: "Die 20 Meter hohe Limoflasche von POPS 66 in Arcadia"
   },
   {
     id: "p-20260625-163042",
@@ -2166,7 +2166,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-163042.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Hunderte bunte Limoflaschen im POPS 66 an der Route 66"
   },
   {
     id: "p-20260625-164758",
@@ -2176,7 +2176,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-164758.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Im Erdgeschoss der historischen Round Barn von Arcadia"
   },
   {
     id: "p-20260625-165308",
@@ -2186,7 +2186,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-165308.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Pferd und Kutsche in der Round Barn"
   },
   {
     id: "p-20260625-165538",
@@ -2196,7 +2196,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-165538.jpg",
     w: 1205,
     h: 1600,
-    caption: ""
+    caption: "Das hölzerne Kuppeldach der Round Barn von 1898"
   },
   {
     id: "p-20260625-165641",
@@ -2206,7 +2206,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-165641.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Staunen unter der Kuppel der Round Barn"
   },
   {
     id: "p-20260625-165840",
@@ -2216,7 +2216,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-165840.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Die berühmte rote Round Barn an der Route 66 in Arcadia"
   },
   {
     id: "p-20260625-171519",
@@ -2226,7 +2226,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-171519.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Die historische Threatt Filling Station an der Route 66"
   },
   {
     id: "p-20260625-174211",
@@ -2236,7 +2236,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-174211.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Mittagspause im 50er-Jahre-Diner in Chandler"
   },
   {
     id: "p-20260625-175923",
@@ -2246,7 +2246,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-175923.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Roter Tresen und Schachbrettboden im Route-66-Diner"
   },
   {
     id: "p-20260625-181947",
@@ -2256,7 +2256,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-181947.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Durch Stroud, Oklahoma — wo die Route 66 den Highway 99 kreuzt"
   },
   {
     id: "p-20260625-182844",
@@ -2266,7 +2266,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-182844.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Unser Wagoneer an einer alten Stahlbrücke der Route 66"
   },
   {
     id: "p-20260625-201611",
@@ -2276,7 +2276,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-201611.jpg",
     w: 1205,
     h: 1600,
-    caption: ""
+    caption: "Art-déco-Hochhaus in der Innenstadt von Tulsa"
   },
   {
     id: "p-20260625-201638",
@@ -2286,7 +2286,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-201638.jpg",
     w: 1205,
     h: 1600,
-    caption: ""
+    caption: "Blick auf den Art-déco-Turm der Boston Avenue Methodist Church"
   },
   {
     id: "p-20260625-202544",
@@ -2296,7 +2296,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-202544.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Im Taproom einer Brauerei in Downtown Tulsa"
   },
   {
     id: "p-20260625-223557",
@@ -2306,7 +2306,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-223557.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Holografischer Friseursalon im Greenwood Rising History Center"
   },
   {
     id: "p-20260625-224742",
@@ -2316,7 +2316,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-224742.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Ausstellung zum Tulsa Race Massacre von 1921"
   },
   {
     id: "p-20260625-225030",
@@ -2326,7 +2326,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-225030.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Die Geschichte des Massakers von 1921 im Greenwood Rising"
   },
   {
     id: "p-20260625-232747",
@@ -2336,7 +2336,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-232747.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Greenwood Rising — Mahnmal im einstigen »Black Wall Street«-Viertel"
   },
   {
     id: "p-20260625-233024",
@@ -2346,7 +2346,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-233024.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "»History in the Making« — Wandbild im Greenwood District"
   },
   {
     id: "p-20260625-234911",
@@ -2356,7 +2356,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-234911.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Einlaufen der Tulsa Drillers im ONEOK Field"
   },
   {
     id: "p-20260626-003511",
@@ -2366,7 +2366,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-003511.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Baseball-Abend bei den Tulsa Drillers"
   },
   {
     id: "p-20260626-003604",
@@ -2376,7 +2376,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-003604.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Mit Hornsby, dem Maskottchen der Tulsa Drillers"
   },
   {
     id: "p-20260626-021300",
@@ -2386,7 +2386,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-021300.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Flutlicht-Baseball im ONEOK Field"
   },
   {
     id: "p-20260626-033231",
@@ -2396,7 +2396,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-033231.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Nachtschwärmen in Arnie's irischem Pub in Tulsa"
   },
   {
     id: "p-20260626-153251",
@@ -2406,7 +2406,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-153251.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Am Blue Whale of Catoosa an der Route 66"
   },
   {
     id: "p-20260626-153941",
@@ -2416,7 +2416,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-153941.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Der Blue Whale of Catoosa — Wahrzeichen der Route 66"
   },
   {
     id: "p-20260626-163013",
@@ -2426,7 +2426,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-163013.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Auf der Route 66 durch den Nordosten Oklahomas"
   },
   {
     id: "p-20260626-174620",
@@ -2436,7 +2436,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-174620.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Cars on the Route in Galena, Kansas"
   },
   {
     id: "p-20260626-174644",
@@ -2446,7 +2446,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-174644.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Der Abschlepptruck, der Pixars »Hook« inspirierte"
   },
   {
     id: "p-20260626-180002",
@@ -2456,7 +2456,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-180002.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Gravy's Place an der Route 66 in Galena"
   },
   {
     id: "p-20260626-191425",
@@ -2466,7 +2466,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-191425.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Brauereipause in Pittsburg, Kansas"
   },
   {
     id: "p-20260626-202913",
@@ -2476,7 +2476,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-202913.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Tankstelle mit »MAGA«-Leuchtreklame im ländlichen Kansas"
   },
   {
     id: "p-20260626-220548",
@@ -2486,6 +2486,6 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-220548.jpg",
     w: 1600,
     h: 1205,
-    caption: ""
+    caption: "Ankunft am Quartier bei Kansas City"
   }
 ];
