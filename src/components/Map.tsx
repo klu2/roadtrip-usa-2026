@@ -8,7 +8,7 @@ import { ROUTE_GEOMETRY } from "@/data/route-geometry";
 import { PHOTOS } from "@/data/photos";
 import { STATE_SHAPES } from "@/data/state-shapes";
 import { US_STATES } from "@/data/states";
-import { ROUTE_66, ROUTE_66_STOPS } from "@/data/route66";
+import { ROUTE_66_GEOMETRY, ROUTE_66_STOPS } from "@/data/route66-geometry";
 import { fmtDate, stayBadge, enumerateDays } from "@/lib/format";
 import { buildDay } from "@/lib/day";
 
@@ -17,6 +17,45 @@ function localKey(date: string, time: string): number {
   const [y, m, d] = date.split("-").map(Number);
   const [hh, mm] = time.split(":").map(Number);
   return Date.UTC(y, m - 1, d, hh, mm || 0);
+}
+
+/** Great-circle distance between two [lat, lon] points in degrees. */
+function haversineDistance(a: [number, number], b: [number, number]): number {
+  const R = 6371;
+  const dLat = ((b[0] - a[0]) * Math.PI) / 180;
+  const dLon = ((b[1] - a[1]) * Math.PI) / 180;
+  const la1 = (a[0] * Math.PI) / 180;
+  const la2 = (b[0] * Math.PI) / 180;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(la1) * Math.cos(la2) * Math.sin(dLon / 2) ** 2;
+  return 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h)) * R;
+}
+
+/** Check if a point is within tolerance (km) of a polyline. */
+function isPointNearPolyline(
+  point: [number, number],
+  polyline: [number, number][],
+  toleranceKm: number
+): boolean {
+  for (let i = 0; i < polyline.length - 1; i++) {
+    const a = polyline[i];
+    const b = polyline[i + 1];
+    const d = pointToSegmentDistance(point, a, b);
+    if (d < toleranceKm) return true;
+  }
+  return false;
+}
+
+/** Minimum distance from point p to line segment a-b, in km. */
+function pointToSegmentDistance(p: [number, number], a: [number, number], b: [number, number]): number {
+  const [px, py] = [p[1], p[0]];
+  const [ax, ay] = [a[1], a[0]];
+  const [bx, by] = [b[1], b[0]];
+  const dx = bx - ax;
+  const dy = by - ay;
+  const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy)));
+  const cx = ax + t * dx;
+  const cy = ay + t * dy;
+  return haversineDistance([cy, cx], p);
 }
 
 const BALL_SVG = `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#181513" stroke-width="1.5"/><polygon points="16,8 21,11.6 19,17.5 13,17.5 11,11.6" fill="#181513"/><path d="M16 1 L16 8 M1 16 L11 11.6 M31 16 L21 11.6 M6 26 L13 17.5 M26 26 L19 17.5" stroke="#181513" stroke-width="1.2" fill="none"/></svg>`;
@@ -99,22 +138,46 @@ export default function TripMap({ interactive = false, className, focusId, focus
         L.marker(info.labelAt, { icon: badge, interactive: false, keyboard: false }).addTo(map);
       });
 
-      // Historic Route 66 — a decorative overlay, not part of the trip. Drawn
-      // right after the state fills so it sits beneath the trip route and all
-      // markers: a brown dashed "Mother Road" line from Chicago to Santa Monica,
-      // with Route 66 shields + city labels dropped at the iconic stops.
+      // Historic Route 66 — snapped to actual roads. Drawn right after the
+      // state fills so it sits beneath the trip route and all markers. Where
+      // Route 66 overlaps with our actual trip route, skip that segment (and
+      // instead render the trip waypoints in brown for visibility).
       const R66_BROWN = "#6b4226";
-      if (ROUTE_66.length > 1) {
-        L.polyline(ROUTE_66, {
-          color: R66_BROWN,
-          weight: 3,
-          opacity: 0.7,
-          dashArray: "2 9",
-          lineCap: "round",
-          lineJoin: "round",
-          interactive: false,
-        }).addTo(map);
+      const R66_TOLERANCE = 15; // km tolerance for overlap detection
+
+      // Split Route 66 into segments: keep those that don't overlap with ROUTE_GEOMETRY.
+      const r66Segments: [number, number][][] = [];
+      let currentSegment: [number, number][] = [];
+
+      if (ROUTE_66_GEOMETRY.length > 1) {
+        for (let i = 0; i < ROUTE_66_GEOMETRY.length; i++) {
+          const point = ROUTE_66_GEOMETRY[i];
+          const overlaps = isPointNearPolyline(point, ROUTE_GEOMETRY, R66_TOLERANCE);
+
+          if (!overlaps) {
+            currentSegment.push(point);
+          } else if (currentSegment.length > 0) {
+            // End current segment and start a new one after the overlap
+            if (currentSegment.length > 1) r66Segments.push(currentSegment);
+            currentSegment = [];
+          }
+        }
+        if (currentSegment.length > 1) r66Segments.push(currentSegment);
+
+        // Draw non-overlapping Route 66 segments
+        r66Segments.forEach((segment) => {
+          L.polyline(segment, {
+            color: R66_BROWN,
+            weight: 3,
+            opacity: 0.7,
+            dashArray: "2 9",
+            lineCap: "round",
+            lineJoin: "round",
+            interactive: false,
+          }).addTo(map);
+        });
       }
+
       ROUTE_66_STOPS.forEach((stop) => {
         const icon = L.divIcon({
           className: "r66-shield",
@@ -154,11 +217,14 @@ export default function TripMap({ interactive = false, className, focusId, focus
       }
 
       // Upcoming anchors (no GPS yet): hotels/games after the last photo.
-      const future: { coords: [number, number]; key: number }[] = [];
+      const future: { coords: [number, number]; key: number; onRoute66: boolean }[] = [];
       TRIP.hotels.forEach((h) => {
         if (h.checkIn < ROADTRIP_START) return;
         const key = localKey(h.checkIn, "22:00");
-        if (key > lastTrackKey) future.push({ coords: h.coords, key });
+        if (key > lastTrackKey) {
+          const onRoute66 = isPointNearPolyline(h.coords, ROUTE_66_GEOMETRY, R66_TOLERANCE);
+          future.push({ coords: h.coords, key, onRoute66 });
+        }
       });
       TRIP.games.forEach((g) => {
         // Games with a `reach` are side-excursions from a base hotel — keep
@@ -166,7 +232,10 @@ export default function TripMap({ interactive = false, className, focusId, focus
         if (g.reach) return;
         const t = g.kickoff.match(/(\d{1,2}):(\d{2})/);
         const key = localKey(g.date, t ? `${t[1]}:${t[2]}` : "20:00");
-        if (key > lastTrackKey) future.push({ coords: g.coords, key });
+        if (key > lastTrackKey) {
+          const onRoute66 = isPointNearPolyline(g.coords, ROUTE_66_GEOMETRY, R66_TOLERANCE);
+          future.push({ coords: g.coords, key, onRoute66 });
+        }
       });
       future.sort((a, b) => a.key - b.key);
 
@@ -178,13 +247,34 @@ export default function TripMap({ interactive = false, className, focusId, focus
         lineCap: "round" as const,
         lineJoin: "round" as const,
       };
+      const dashedRoute66 = {
+        color: R66_BROWN,
+        weight: 2.5,
+        opacity: 0.6,
+        dashArray: "6 6",
+        lineCap: "round" as const,
+        lineJoin: "round" as const,
+      };
 
+      // Draw planned route, but use Route 66 brown color for segments that overlap.
       const plannedLatLngs = [
         ...(ROUTE_GEOMETRY.length ? [ROUTE_GEOMETRY.at(-1)!] : []),
         ...future.map((f) => f.coords),
       ];
       if (plannedLatLngs.length > 1) {
-        L.polyline(plannedLatLngs, dashed).addTo(map);
+        // Split into segments: same color between same-route-66-status waypoints.
+        // plannedLatLngs[0] is from ROUTE_GEOMETRY (if exists), plannedLatLngs[i+1] = future[i]
+        for (let i = 0; i < plannedLatLngs.length - 1; i++) {
+          const from = plannedLatLngs[i];
+          const to = plannedLatLngs[i + 1];
+          // Map to future array: future[0] starts at plannedLatLngs[1]
+          const futureFromIdx = i > 0 ? i - 1 : -1;
+          const futureToIdx = i < future.length ? i : -1;
+          const fromIsR66 = futureFromIdx >= 0 && future[futureFromIdx]?.onRoute66;
+          const toIsR66 = futureToIdx >= 0 && future[futureToIdx]?.onRoute66;
+          const style = fromIsR66 || toIsR66 ? dashedRoute66 : dashed;
+          L.polyline([from, to], style).addTo(map);
+        }
       }
 
       // Car-reached matches: a dashed spur from the base hotel (the one slept
