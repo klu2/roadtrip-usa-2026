@@ -2156,7 +2156,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-162754.jpg",
     w: 1205,
     h: 1600,
-    caption: "Cylinder 3 — die ikonische Spiralturm-Installation in Oklahoma City"
+    caption: ""
   },
   {
     id: "p-20260625-163042",
@@ -2166,7 +2166,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-163042.jpg",
     w: 1600,
     h: 1205,
-    caption: "Besucherzentrum in Oklahoma City"
+    caption: ""
   },
   {
     id: "p-20260625-164758",
@@ -2176,7 +2176,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-164758.jpg",
     w: 1600,
     h: 1205,
-    caption: "Route-66-Diner mit klassischem Charakter"
+    caption: ""
   },
   {
     id: "p-20260625-165308",
@@ -2186,7 +2186,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-165308.jpg",
     w: 1600,
     h: 1205,
-    caption: "Fahrt durch Oklahoma auf dem Weg nach Kansas City"
+    caption: ""
   },
   {
     id: "p-20260625-165538",
@@ -2196,7 +2196,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-165538.jpg",
     w: 1205,
     h: 1600,
-    caption: "Geodätische Kuppel — Architektur-Wunderwerk unterwegs"
+    caption: ""
   },
   {
     id: "p-20260625-165641",
@@ -2206,7 +2206,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-165641.jpg",
     w: 1600,
     h: 1205,
-    caption: "Highway durch die Prärie"
+    caption: ""
   },
   {
     id: "p-20260625-165840",
@@ -2216,7 +2216,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-165840.jpg",
     w: 1600,
     h: 1205,
-    caption: "Gerade Fahrbahn Richtung Norden"
+    caption: ""
   },
   {
     id: "p-20260625-171519",
@@ -2226,7 +2226,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-171519.jpg",
     w: 1600,
     h: 1205,
-    caption: "Kurz vor Kansas City"
+    caption: ""
   },
   {
     id: "p-20260625-174211",
@@ -2236,7 +2236,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-174211.jpg",
     w: 1600,
     h: 1205,
-    caption: "Route-66-Diner mit Schachbrettboden"
+    caption: ""
   },
   {
     id: "p-20260625-175923",
@@ -2246,7 +2246,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-175923.jpg",
     w: 1600,
     h: 1205,
-    caption: "Klassisches Diner auf der Mother Road"
+    caption: ""
   },
   {
     id: "p-20260625-181947",
@@ -2256,7 +2256,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-181947.jpg",
     w: 1600,
     h: 1205,
-    caption: "Auf dem Weg zum Arrowhead Stadium"
+    caption: ""
   },
   {
     id: "p-20260625-182844",
@@ -2266,7 +2266,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-182844.jpg",
     w: 1600,
     h: 1205,
-    caption: "Anfahrt zum Stadion — Spieltag gegen Japan"
+    caption: ""
   },
   {
     id: "p-20260625-201611",
@@ -2276,7 +2276,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-201611.jpg",
     w: 1205,
     h: 1600,
-    caption: "Downtown Kansas City — Art-Deco-Architektur"
+    caption: ""
   },
   {
     id: "p-20260625-201638",
@@ -2286,7 +2286,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-201638.jpg",
     w: 1205,
     h: 1600,
-    caption: "Im Arrowhead Stadium — Teambereich"
+    caption: ""
   },
   {
     id: "p-20260625-202544",
@@ -2296,7 +2296,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-202544.jpg",
     w: 1600,
     h: 1205,
-    caption: "Blick ins Stadion vor dem Anpfiff"
+    caption: ""
   },
   {
     id: "p-20260625-223557",
@@ -2306,7 +2306,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-223557.jpg",
     w: 1600,
     h: 1205,
-    caption: "Im Arrowhead Stadium während des Spiels"
+    caption: ""
   },
   {
     id: "p-20260625-224742",
@@ -2316,7 +2316,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-224742.jpg",
     w: 1600,
     h: 1205,
-    caption: "Stadion-Ausstellung und Museum"
+    caption: ""
   },
   {
     id: "p-20260625-225030",
@@ -2326,7 +2326,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-225030.jpg",
     w: 1600,
     h: 1205,
-    caption: "Spannung im Stadion"
+    caption: ""
   },
   {
     id: "p-20260625-232747",
@@ -2336,7 +2336,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-232747.jpg",
     w: 1600,
     h: 1205,
-    caption: "Im Arrowhead Stadium"
+    caption: ""
   },
   {
     id: "p-20260625-233024",
@@ -2346,7 +2346,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-233024.jpg",
     w: 1600,
     h: 1205,
-    caption: "Österreichische Fans im Stadion"
+    caption: ""
   },
   {
     id: "p-20260625-234911",
@@ -2356,7 +2356,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260625-234911.jpg",
     w: 1600,
     h: 1205,
-    caption: "Spiel in vollem Gange"
+    caption: ""
   },
   {
     id: "p-20260626-003511",
@@ -2366,7 +2366,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-003511.jpg",
     w: 1600,
     h: 1205,
-    caption: "Nach dem Spiel — Nacht in Kansas City"
+    caption: ""
   },
   {
     id: "p-20260626-003604",
@@ -2376,7 +2376,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-003604.jpg",
     w: 1600,
     h: 1205,
-    caption: "Feier nach Österreichs Sieg"
+    caption: ""
   },
   {
     id: "p-20260626-021300",
@@ -2386,7 +2386,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-021300.jpg",
     w: 1600,
     h: 1205,
-    caption: "Späte Nacht in Kansas City"
+    caption: ""
   },
   {
     id: "p-20260626-033231",
@@ -2396,7 +2396,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-033231.jpg",
     w: 1600,
     h: 1205,
-    caption: "Nachtleben in Kansas City"
+    caption: ""
   },
   {
     id: "p-20260626-153251",
@@ -2406,7 +2406,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-153251.jpg",
     w: 1600,
     h: 1205,
-    caption: "Vintage Motel und Tankstelle — Route-66-Nostalgie"
+    caption: ""
   },
   {
     id: "p-20260626-153941",
@@ -2416,7 +2416,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-153941.jpg",
     w: 1600,
     h: 1205,
-    caption: "Klassisches Americana-Motel"
+    caption: ""
   },
   {
     id: "p-20260626-163013",
@@ -2426,7 +2426,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-163013.jpg",
     w: 1600,
     h: 1205,
-    caption: "Fahrt ostwärts nach Missouri"
+    caption: ""
   },
   {
     id: "p-20260626-174620",
@@ -2436,7 +2436,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-174620.jpg",
     w: 1600,
     h: 1205,
-    caption: "Vintage-Diner auf der Route 66 — Americana pur"
+    caption: ""
   },
   {
     id: "p-20260626-174644",
@@ -2446,7 +2446,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-174644.jpg",
     w: 1600,
     h: 1205,
-    caption: "Klassische Route-66-Autos beim Diner"
+    caption: ""
   },
   {
     id: "p-20260626-180002",
@@ -2456,7 +2456,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-180002.jpg",
     w: 1600,
     h: 1205,
-    caption: "Roadside Amerika"
+    caption: ""
   },
   {
     id: "p-20260626-191425",
@@ -2466,7 +2466,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-191425.jpg",
     w: 1600,
     h: 1205,
-    caption: "Abend auf dem Highway"
+    caption: ""
   },
   {
     id: "p-20260626-202913",
@@ -2476,7 +2476,7 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-202913.jpg",
     w: 1600,
     h: 1205,
-    caption: "Raststätte auf der Fahrt nach Norden"
+    caption: ""
   },
   {
     id: "p-20260626-220548",
@@ -2486,6 +2486,6 @@ export const PHOTOS: TripPhoto[] = [
     full: "/photos/p-20260626-220548.jpg",
     w: 1600,
     h: 1205,
-    caption: "Weiterfahrt durch die Nacht"
+    caption: ""
   }
 ];
