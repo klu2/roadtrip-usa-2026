@@ -6,6 +6,8 @@ import { TRIP } from "@/data/trip";
 import { TRACK } from "@/data/track";
 import { ROUTE_GEOMETRY } from "@/data/route-geometry";
 import { PHOTOS } from "@/data/photos";
+import { STATE_SHAPES } from "@/data/state-shapes";
+import { US_STATES } from "@/data/states";
 import { fmtDate, stayBadge, enumerateDays } from "@/lib/format";
 import { buildDay } from "@/lib/day";
 
@@ -62,6 +64,36 @@ export default function TripMap({ interactive = false, className, focusId, focus
           maxZoom: 18,
         }
       ).addTo(map);
+
+      // State shading — the eight states the trip crosses, each a pale
+      // fill with a darker border, drawn first so it sits beneath the
+      // route, markers and photos. Polygons are non-interactive so clicks
+      // fall through to the map and the markers on top. A small flag-and-
+      // name badge floats near each state's centre.
+      STATE_SHAPES.forEach((shape) => {
+        const info = US_STATES[shape.code];
+        if (!info) return;
+        // shape.rings is already in Leaflet's multi-polygon shape
+        // (polygons → rings → [lat, lon] points).
+        L.polygon(shape.rings as [number, number][][][], {
+          color: info.border,
+          weight: 1.5,
+          opacity: 0.9,
+          fillColor: info.fill,
+          fillOpacity: 0.45,
+          interactive: false,
+        }).addTo(map);
+
+        const badge = L.divIcon({
+          className: "state-badge",
+          html:
+            `<img class="state-badge__flag" src="${info.flag}" alt="" aria-hidden="true"/>` +
+            `<span class="state-badge__name">${info.name}</span>`,
+          iconSize: [64, 30],
+          iconAnchor: [32, 15],
+        });
+        L.marker(info.labelAt, { icon: badge, interactive: false, keyboard: false }).addTo(map);
+      });
 
       // The route has two parts. The portion we've already driven is the
       // GPS track snapped onto real OSM roads (ROUTE_GEOMETRY) — drawn as a
