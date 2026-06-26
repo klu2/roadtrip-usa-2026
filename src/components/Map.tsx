@@ -8,6 +8,7 @@ import { ROUTE_GEOMETRY } from "@/data/route-geometry";
 import { PHOTOS } from "@/data/photos";
 import { STATE_SHAPES } from "@/data/state-shapes";
 import { US_STATES } from "@/data/states";
+import { ROUTE_66, ROUTE_66_STOPS } from "@/data/route66";
 import { fmtDate, stayBadge, enumerateDays } from "@/lib/format";
 import { buildDay } from "@/lib/day";
 
@@ -22,6 +23,9 @@ const BALL_SVG = `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><c
 
 // Car icon marking the start of the road trip (rental pickup at SFO).
 const CAR_SVG = `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#181513" stroke-width="1.5"/><g transform="translate(4 4)" fill="#ED2939"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></g></svg>`;
+
+// Historic U.S. Route 66 shield — the classic white-on-black highway emblem.
+const R66_SHIELD = `<svg viewBox="0 0 40 44" xmlns="http://www.w3.org/2000/svg"><path d="M20 2C28 2 35 3 37 6 38 11 37 14 33 18 38 23 36 33 20 42 4 33 2 23 7 18 3 14 2 11 3 6 5 3 12 2 20 2Z" fill="#fff" stroke="#181513" stroke-width="2.5" stroke-linejoin="round"/><text x="20" y="15" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="6.5" letter-spacing="0.5" fill="#181513">ROUTE</text><text x="20" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="19" fill="#181513">66</text></svg>`;
 
 interface Props {
   /** When true, scroll wheel zooms the map (use on dedicated map page). */
@@ -93,6 +97,34 @@ export default function TripMap({ interactive = false, className, focusId, focus
           iconAnchor: [32, 15],
         });
         L.marker(info.labelAt, { icon: badge, interactive: false, keyboard: false }).addTo(map);
+      });
+
+      // Historic Route 66 — a decorative overlay, not part of the trip. Drawn
+      // right after the state fills so it sits beneath the trip route and all
+      // markers: a brown dashed "Mother Road" line from Chicago to Santa Monica,
+      // with Route 66 shields + city labels dropped at the iconic stops.
+      const R66_BROWN = "#6b4226";
+      if (ROUTE_66.length > 1) {
+        L.polyline(ROUTE_66, {
+          color: R66_BROWN,
+          weight: 3,
+          opacity: 0.7,
+          dashArray: "2 9",
+          lineCap: "round",
+          lineJoin: "round",
+          interactive: false,
+        }).addTo(map);
+      }
+      ROUTE_66_STOPS.forEach((stop) => {
+        const icon = L.divIcon({
+          className: "r66-shield",
+          html:
+            R66_SHIELD +
+            `<span class="r66-shield__label">${stop.label}</span>`,
+          iconSize: [34, 50],
+          iconAnchor: [17, 19],
+        });
+        L.marker(stop.c, { icon, interactive: false, keyboard: false }).addTo(map);
       });
 
       // The route has two parts. The portion we've already driven is the

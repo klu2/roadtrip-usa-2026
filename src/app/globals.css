@@ -319,6 +319,38 @@ section { padding: 26px 0 12px; }
     0 1px 2px var(--weiss);
 }
 
+/* Historic Route 66 shield + city label — decorative markers dropped along
+   the brown dashed Mother Road overlay. Non-interactive map labels. */
+.r66-shield {
+  background: transparent;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  width: auto !important;
+  height: auto !important;
+  pointer-events: none;
+}
+.r66-shield svg {
+  width: 34px;
+  height: 38px;
+  display: block;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+}
+.r66-shield__label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b4226;
+  white-space: nowrap;
+  text-shadow:
+    0 0 3px var(--weiss),
+    0 0 3px var(--weiss),
+    0 1px 2px var(--weiss);
+}
+
 .photo-pin { background: transparent; }
 .photo-pin__frame {
   display: block;
