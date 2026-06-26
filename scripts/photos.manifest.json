@@ -2994,5 +2994,481 @@
     "w": 1600,
     "h": 1205,
     "caption": "Zum Abschluss: Angry Scotsman Brewing in Oklahoma City"
+  },
+  {
+    "id": "p-20260625-162754",
+    "file": "PXL_20260625_162754586.MP.jpg",
+    "coords": [
+      35.6582,
+      -97.335519
+    ],
+    "time": "2026-06-25T11:27:54",
+    "thumb": "/photos/p-20260625-162754-thumb.jpg",
+    "full": "/photos/p-20260625-162754.jpg",
+    "w": 1205,
+    "h": 1600,
+    "caption": "Cylinder 3 — die ikonische Spiralturm-Installation in Oklahoma City"
+  },
+  {
+    "id": "p-20260625-163042",
+    "file": "PXL_20260625_163042902.jpg",
+    "coords": [
+      35.658061,
+      -97.335272
+    ],
+    "time": "2026-06-25T11:30:42",
+    "thumb": "/photos/p-20260625-163042-thumb.jpg",
+    "full": "/photos/p-20260625-163042.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Besucherzentrum in Oklahoma City"
+  },
+  {
+    "id": "p-20260625-164758",
+    "file": "PXL_20260625_164758818.jpg",
+    "coords": [
+      35.662361,
+      -97.326039
+    ],
+    "time": "2026-06-25T11:47:58",
+    "thumb": "/photos/p-20260625-164758-thumb.jpg",
+    "full": "/photos/p-20260625-164758.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Route-66-Diner mit klassischem Charakter"
+  },
+  {
+    "id": "p-20260625-165308",
+    "file": "PXL_20260625_165308135.jpg",
+    "coords": [
+      35.662372,
+      -97.326036
+    ],
+    "time": "2026-06-25T11:53:08",
+    "thumb": "/photos/p-20260625-165308-thumb.jpg",
+    "full": "/photos/p-20260625-165308.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Fahrt durch Oklahoma auf dem Weg nach Kansas City"
+  },
+  {
+    "id": "p-20260625-165538",
+    "file": "PXL_20260625_165538208.jpg",
+    "coords": [
+      35.662381,
+      -97.326053
+    ],
+    "time": "2026-06-25T11:55:38",
+    "thumb": "/photos/p-20260625-165538-thumb.jpg",
+    "full": "/photos/p-20260625-165538.jpg",
+    "w": 1205,
+    "h": 1600,
+    "caption": "Geodätische Kuppel — Architektur-Wunderwerk unterwegs"
+  },
+  {
+    "id": "p-20260625-165641",
+    "file": "PXL_20260625_165641312.MP.jpg",
+    "coords": [
+      35.662381,
+      -97.326053
+    ],
+    "time": "2026-06-25T11:56:41",
+    "thumb": "/photos/p-20260625-165641-thumb.jpg",
+    "full": "/photos/p-20260625-165641.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Highway durch die Prärie"
+  },
+  {
+    "id": "p-20260625-165840",
+    "file": "PXL_20260625_165840152.jpg",
+    "coords": [
+      35.662381,
+      -97.326044
+    ],
+    "time": "2026-06-25T11:58:40",
+    "thumb": "/photos/p-20260625-165840-thumb.jpg",
+    "full": "/photos/p-20260625-165840.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Gerade Fahrbahn Richtung Norden"
+  },
+  {
+    "id": "p-20260625-171519",
+    "file": "PXL_20260625_171519645.jpg",
+    "coords": [
+      35.666414,
+      -97.14165
+    ],
+    "time": "2026-06-25T12:15:19",
+    "thumb": "/photos/p-20260625-171519-thumb.jpg",
+    "full": "/photos/p-20260625-171519.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Kurz vor Kansas City"
+  },
+  {
+    "id": "p-20260625-174211",
+    "file": "PXL_20260625_174211797.TS-000.jpg",
+    "coords": [
+      35.701131,
+      -96.880419
+    ],
+    "time": "2026-06-25T12:42:11",
+    "thumb": "/photos/p-20260625-174211-thumb.jpg",
+    "full": "/photos/p-20260625-174211.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Route-66-Diner mit Schachbrettboden"
+  },
+  {
+    "id": "p-20260625-175923",
+    "file": "PXL_20260625_175923854.MP.jpg",
+    "coords": [
+      35.701075,
+      -96.880572
+    ],
+    "time": "2026-06-25T12:59:23",
+    "thumb": "/photos/p-20260625-175923-thumb.jpg",
+    "full": "/photos/p-20260625-175923.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Klassisches Diner auf der Mother Road"
+  },
+  {
+    "id": "p-20260625-181947",
+    "file": "PXL_20260625_181947347.jpg",
+    "coords": [
+      35.749025,
+      -96.663339
+    ],
+    "time": "2026-06-25T13:19:47",
+    "thumb": "/photos/p-20260625-181947-thumb.jpg",
+    "full": "/photos/p-20260625-181947.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Auf dem Weg zum Arrowhead Stadium"
+  },
+  {
+    "id": "p-20260625-182844",
+    "file": "PXL_20260625_182844038.jpg",
+    "coords": [
+      35.754506,
+      -96.636842
+    ],
+    "time": "2026-06-25T13:28:44",
+    "thumb": "/photos/p-20260625-182844-thumb.jpg",
+    "full": "/photos/p-20260625-182844.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Anfahrt zum Stadion — Spieltag gegen Japan"
+  },
+  {
+    "id": "p-20260625-201611",
+    "file": "PXL_20260625_201611003.jpg",
+    "coords": [
+      36.152564,
+      -95.989328
+    ],
+    "time": "2026-06-25T15:16:11",
+    "thumb": "/photos/p-20260625-201611-thumb.jpg",
+    "full": "/photos/p-20260625-201611.jpg",
+    "w": 1205,
+    "h": 1600,
+    "caption": "Downtown Kansas City — Art-Deco-Architektur"
+  },
+  {
+    "id": "p-20260625-201638",
+    "file": "PXL_20260625_201638576.jpg",
+    "coords": [
+      36.152564,
+      -95.989328
+    ],
+    "time": "2026-06-25T15:16:38",
+    "thumb": "/photos/p-20260625-201638-thumb.jpg",
+    "full": "/photos/p-20260625-201638.jpg",
+    "w": 1205,
+    "h": 1600,
+    "caption": "Im Arrowhead Stadium — Teambereich"
+  },
+  {
+    "id": "p-20260625-202544",
+    "file": "PXL_20260625_202544079.jpg",
+    "coords": [
+      36.155067,
+      -95.984592
+    ],
+    "time": "2026-06-25T15:25:44",
+    "thumb": "/photos/p-20260625-202544-thumb.jpg",
+    "full": "/photos/p-20260625-202544.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Blick ins Stadion vor dem Anpfiff"
+  },
+  {
+    "id": "p-20260625-223557",
+    "file": "PXL_20260625_223557709.jpg",
+    "coords": [
+      36.159822,
+      -95.985714
+    ],
+    "time": "2026-06-25T17:35:57",
+    "thumb": "/photos/p-20260625-223557-thumb.jpg",
+    "full": "/photos/p-20260625-223557.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Im Arrowhead Stadium während des Spiels"
+  },
+  {
+    "id": "p-20260625-224742",
+    "file": "PXL_20260625_224742373.jpg",
+    "coords": [
+      36.159919,
+      -95.985383
+    ],
+    "time": "2026-06-25T17:47:42",
+    "thumb": "/photos/p-20260625-224742-thumb.jpg",
+    "full": "/photos/p-20260625-224742.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Stadion-Ausstellung und Museum"
+  },
+  {
+    "id": "p-20260625-225030",
+    "file": "PXL_20260625_225030813.jpg",
+    "coords": [
+      36.159958,
+      -95.985358
+    ],
+    "time": "2026-06-25T17:50:30",
+    "thumb": "/photos/p-20260625-225030-thumb.jpg",
+    "full": "/photos/p-20260625-225030.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Spannung im Stadion"
+  },
+  {
+    "id": "p-20260625-232747",
+    "file": "PXL_20260625_232747451.jpg",
+    "coords": [
+      36.159689,
+      -95.985972
+    ],
+    "time": "2026-06-25T18:27:47",
+    "thumb": "/photos/p-20260625-232747-thumb.jpg",
+    "full": "/photos/p-20260625-232747.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Im Arrowhead Stadium"
+  },
+  {
+    "id": "p-20260625-233024",
+    "file": "PXL_20260625_233024728.jpg",
+    "coords": [
+      36.15995,
+      -95.986094
+    ],
+    "time": "2026-06-25T18:30:24",
+    "thumb": "/photos/p-20260625-233024-thumb.jpg",
+    "full": "/photos/p-20260625-233024.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Österreichische Fans im Stadion"
+  },
+  {
+    "id": "p-20260625-234911",
+    "file": "PXL_20260625_234911599.jpg",
+    "coords": [
+      36.160506,
+      -95.988064
+    ],
+    "time": "2026-06-25T18:49:11",
+    "thumb": "/photos/p-20260625-234911-thumb.jpg",
+    "full": "/photos/p-20260625-234911.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Spiel in vollem Gange"
+  },
+  {
+    "id": "p-20260626-003511",
+    "file": "PXL_20260626_003511470.MP.jpg",
+    "coords": [
+      36.160514,
+      -95.988728
+    ],
+    "time": "2026-06-25T19:35:11",
+    "thumb": "/photos/p-20260626-003511-thumb.jpg",
+    "full": "/photos/p-20260626-003511.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Nach dem Spiel — Nacht in Kansas City"
+  },
+  {
+    "id": "p-20260626-003604",
+    "file": "PXL_20260626_003604268.jpg",
+    "coords": [
+      36.160511,
+      -95.988722
+    ],
+    "time": "2026-06-25T19:36:04",
+    "thumb": "/photos/p-20260626-003604-thumb.jpg",
+    "full": "/photos/p-20260626-003604.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Feier nach Österreichs Sieg"
+  },
+  {
+    "id": "p-20260626-021300",
+    "file": "PXL_20260626_021300496.MP.jpg",
+    "coords": [
+      36.160475,
+      -95.988081
+    ],
+    "time": "2026-06-25T21:13:00",
+    "thumb": "/photos/p-20260626-021300-thumb.jpg",
+    "full": "/photos/p-20260626-021300.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Späte Nacht in Kansas City"
+  },
+  {
+    "id": "p-20260626-033231",
+    "file": "PXL_20260626_033231575.MP.jpg",
+    "coords": [
+      36.155767,
+      -95.987167
+    ],
+    "time": "2026-06-25T22:32:31",
+    "thumb": "/photos/p-20260626-033231-thumb.jpg",
+    "full": "/photos/p-20260626-033231.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Nachtleben in Kansas City"
+  },
+  {
+    "id": "p-20260626-153251",
+    "file": "PXL_20260626_153251342.MP.jpg",
+    "coords": [
+      36.193136,
+      -95.733122
+    ],
+    "time": "2026-06-26T10:32:51",
+    "thumb": "/photos/p-20260626-153251-thumb.jpg",
+    "full": "/photos/p-20260626-153251.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Vintage Motel und Tankstelle — Route-66-Nostalgie"
+  },
+  {
+    "id": "p-20260626-153941",
+    "file": "PXL_20260626_153941225.jpg",
+    "coords": [
+      36.193714,
+      -95.732825
+    ],
+    "time": "2026-06-26T10:39:41",
+    "thumb": "/photos/p-20260626-153941-thumb.jpg",
+    "full": "/photos/p-20260626-153941.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Klassisches Americana-Motel"
+  },
+  {
+    "id": "p-20260626-163013",
+    "file": "PXL_20260626_163013861.jpg",
+    "coords": [
+      36.546961,
+      -95.370675
+    ],
+    "time": "2026-06-26T11:30:13",
+    "thumb": "/photos/p-20260626-163013-thumb.jpg",
+    "full": "/photos/p-20260626-163013.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Fahrt ostwärts nach Missouri"
+  },
+  {
+    "id": "p-20260626-174620",
+    "file": "PXL_20260626_174620527.MP.jpg",
+    "coords": [
+      37.080169,
+      -94.639003
+    ],
+    "time": "2026-06-26T12:46:20",
+    "thumb": "/photos/p-20260626-174620-thumb.jpg",
+    "full": "/photos/p-20260626-174620.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Vintage-Diner auf der Route 66 — Americana pur"
+  },
+  {
+    "id": "p-20260626-174644",
+    "file": "PXL_20260626_174644578.jpg",
+    "coords": [
+      37.080364,
+      -94.638889
+    ],
+    "time": "2026-06-26T12:46:44",
+    "thumb": "/photos/p-20260626-174644-thumb.jpg",
+    "full": "/photos/p-20260626-174644.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Klassische Route-66-Autos beim Diner"
+  },
+  {
+    "id": "p-20260626-180002",
+    "file": "PXL_20260626_180002030.MP.jpg",
+    "coords": [
+      37.077125,
+      -94.639139
+    ],
+    "time": "2026-06-26T13:00:02",
+    "thumb": "/photos/p-20260626-180002-thumb.jpg",
+    "full": "/photos/p-20260626-180002.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Roadside Amerika"
+  },
+  {
+    "id": "p-20260626-191425",
+    "file": "PXL_20260626_191425812.jpg",
+    "coords": [
+      37.407553,
+      -94.703942
+    ],
+    "time": "2026-06-26T14:14:25",
+    "thumb": "/photos/p-20260626-191425-thumb.jpg",
+    "full": "/photos/p-20260626-191425.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Abend auf dem Highway"
+  },
+  {
+    "id": "p-20260626-202913",
+    "file": "PXL_20260626_202913949.MP.jpg",
+    "coords": [
+      37.936494,
+      -94.705883
+    ],
+    "time": "2026-06-26T15:29:13",
+    "thumb": "/photos/p-20260626-202913-thumb.jpg",
+    "full": "/photos/p-20260626-202913.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Raststätte auf der Fahrt nach Norden"
+  },
+  {
+    "id": "p-20260626-220548",
+    "file": "PXL_20260626_220548742.jpg",
+    "coords": [
+      39.045328,
+      -94.416369
+    ],
+    "time": "2026-06-26T17:05:48",
+    "thumb": "/photos/p-20260626-220548-thumb.jpg",
+    "full": "/photos/p-20260626-220548.jpg",
+    "w": 1600,
+    "h": 1205,
+    "caption": "Weiterfahrt durch die Nacht"
   }
 ]
