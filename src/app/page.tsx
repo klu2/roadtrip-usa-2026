@@ -3,13 +3,14 @@ import MapClient from "@/components/MapClient";
 import Itinerary from "@/components/Itinerary";
 import DayJumpRow from "@/components/DayJumpRow";
 import { TRIP } from "@/data/trip";
+import { TOTAL_KM } from "@/data/route-geometry";
 import { fmtDate } from "@/lib/format";
 
 export default function Home() {
   const m = TRIP.meta;
   const start = fmtDate(m.start);
   const end = fmtDate(m.end);
-  const totalKm = TRIP.drives.reduce((sum, d) => sum + d.km, 0);
+  const totalKm = TOTAL_KM;
 
   return (
     <>

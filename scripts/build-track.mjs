@@ -33,6 +33,15 @@ const SEED = [
   // Oklahoma City: reached the MainStay Suites ~17:30, then on foot/transit.
   // Use the hotel's own coord as the leg's only OKC waypoint.
   { iso: "2026-06-24T17:30:00", lat: 35.4644, lon: -97.4955, file: "SEED · MainStay Suites OKC" },
+  // Kansas City (Independence): reached Countryside Suites ~17:30 from Tulsa.
+  // Use hotel coord as the base for the stadium day. Only self-driven waypoint
+  // used for this leg; stadium reach is "car" (spur line, not main route).
+  { iso: "2026-06-26T17:30:00", lat: 39.0451, lon: -94.4153, file: "SEED · Countryside Suites Independence" },
+  // Grapevine: final destination, Jun 28 evening. Reached the Super 8 near DFW
+  // Airport to catch morning flight. Use hotel coord as final waypoint. The
+  // Kansas portion of this drive was an Uber (not self-driven), so GPS is excluded
+  // and only the destination hotel SEED marks the arrival.
+  { iso: "2026-06-28T20:00:00", lat: 32.9344, lon: -97.078, file: "SEED · Super 8 Grapevine DFW" },
 ];
 
 // Time windows to drop entirely — GPS captured while NOT driving (on foot),
@@ -75,6 +84,14 @@ const EXCLUDE = [
   // onwards (photos suggest activity from afternoon through next morning). Keep
   // only the hotel SEED as the OKC waypoint.
   { from: "2026-06-24T14:00:00", to: "2026-06-25T09:00:00" },
+  // Kansas City (Independence): arrived at Countryside Suites evening of Jun 26,
+  // then on foot/transit. Drop all GPS from arrival onwards — the hotel SEED is
+  // the only relevant waypoint for this leg. Stadium is a "car" reach (spur).
+  { from: "2026-06-26T17:30:00", to: "2026-06-28T08:00:00" },
+  // June 28: Kansas portion was an Uber ride (not self-driving). Exclude all GPS
+  // from Kansas to avoid route wandering — the trip uses the Grapevine hotel SEED
+  // as the final destination, with the route resuming from the last OK/TX photo.
+  { from: "2026-06-28T08:00:00", to: "2026-06-28T14:00:00" },
 ];
 
 // Individual photos to drop by filename — isolated bad fixes (not bursts).

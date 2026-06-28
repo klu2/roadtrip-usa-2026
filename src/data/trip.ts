@@ -88,6 +88,19 @@ export const TRIP: Trip = {
       capacity: 76416,
       reach: "car", // out-and-back drive from the Independence base — kept off the through-route
       // line (so it doesn't cut from the stadium straight south), but draws a spur base ↔ stadium
+      result: {
+        homeScore: 3,
+        awayScore: 3,
+        halftime: "1:1",
+        goals: [
+          { minute: "28", scorer: "Marko Arnautovic", team: "away", assist: "David Alaba" },
+          { minute: "45", scorer: "Rafik Belghali", team: "home", assist: "Houssem Aouar" },
+          { minute: "55", scorer: "Marcel Sabitzer", team: "away", assist: "Konrad Laimer" },
+          { minute: "60", scorer: "Riyad Mahrez", team: "home", assist: "Houssem Aouar" },
+          { minute: "90+3", scorer: "Riyad Mahrez", team: "home", assist: "Houssem Aouar" },
+          { minute: "90+6", scorer: "Sasa Kalajdzic", team: "away", assist: "Michael Gregoritsch" },
+        ],
+      },
     },
   ],
 
@@ -376,7 +389,7 @@ export const TRIP: Trip = {
     { date: "2026-06-24", title: "Hinauf nach Oklahoma", subtitle: "Dallas → Oklahoma City", states: ["TX", "OK"], hero: "p-20260624-204651" },
     { date: "2026-06-25", title: "Auf der Route 66 nach Tulsa", subtitle: "Oklahoma City → Tulsa", states: ["OK"], hero: "p-20260625-201638" },
     { date: "2026-06-26", title: "Weiter ins Basislager Kansas City", subtitle: "Tulsa → Independence · vor dem letzten Gruppenspiel", states: ["OK", "KS", "MO"], hero: "p-20260626-174620" },
-    { date: "2026-06-27", title: "Finale in Kansas City", subtitle: "Algerien – Österreich · Arrowhead Stadium", states: ["MO"] },
+    { date: "2026-06-27", title: "Finale in Kansas City", subtitle: "Algerien – Österreich · Arrowhead Stadium", states: ["MO"], hero: "p-20260627-233119" },
     { date: "2026-06-28", title: "Letzte Etappe nach Texas", subtitle: "Independence → Grapevine (DFW)", states: ["MO", "KS", "OK", "TX"] },
     { date: "2026-06-29", title: "Heimreise", subtitle: "Dallas → Houston → Toronto → Wien", states: ["TX"] },
     { date: "2026-06-30", title: "Ankunft in Wien", subtitle: "Zurück in Österreich" },
