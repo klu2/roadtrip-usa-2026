@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Game } from "@/data/trip.types";
 
 interface Props {
@@ -19,9 +20,9 @@ export default function GameCard({ game, index }: Props) {
     >
       <div className="ribbon">{`Spiel ${index + 1} · Gruppe J`}</div>
       {game.stadiumPhoto ? (
-        <div className="stadium-photo">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={game.stadiumPhoto} alt={game.stadium} loading="lazy" />
+        <div className="stadium-photo" data-zoom-src={game.stadiumPhoto}>
+          {/* Full-bleed in a ≤560px column; next/image downscales the large source per device. */}
+          <Image src={game.stadiumPhoto} alt={game.stadium} fill sizes="(max-width: 600px) 100vw, 560px" />
         </div>
       ) : null}
       <div className="matchup">

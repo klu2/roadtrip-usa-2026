@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { TripPhoto } from "@/data/trip.types";
 
 interface Props {
@@ -17,8 +18,8 @@ export default function PhotoStrip({ photos, href, max = 5 }: Props) {
     <Link href={href} className="photo-strip" prefetch aria-label={`${photos.length} Fotos ansehen`}>
       {shown.map((p) => (
         <span className="photo-strip-thumb" key={p.id}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={p.thumb} alt="" loading="lazy" />
+          {/* ≤72px slots → the 200px thumb is plenty even at 2–3× DPR. */}
+          <Image src={p.thumb} alt="" fill sizes="72px" />
         </span>
       ))}
       {overflow > 0 && <span className="photo-strip-more">+{overflow}</span>}

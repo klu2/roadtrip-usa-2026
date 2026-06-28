@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { TRIP } from "@/data/trip";
@@ -59,8 +60,14 @@ export default async function TagPage({ params }: { params: Promise<{ n: string 
 
       {hero && (
         <div className="tag-hero">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={hero.full} alt={info?.title || fmt.full} />
+          {/* Above-the-fold hero → priority; next/image serves a device-sized AVIF/WebP. */}
+          <Image
+            src={hero.full}
+            alt={info?.title || fmt.full}
+            fill
+            priority
+            sizes="(max-width: 600px) 100vw, 560px"
+          />
         </div>
       )}
 
@@ -117,9 +124,9 @@ export default async function TagPage({ params }: { params: Promise<{ n: string 
           <h2 className="tag-section-head">Übernachtung</h2>
           <div className="tag-hotel">
             {hotel.photo && (
-              <div className="stay-photo">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={hotel.photo} alt={hotel.name} loading="lazy" />
+              <div className="stay-photo" data-zoom-src={hotel.photo}>
+                {/* 110px square thumbnail; large source downscaled by next/image. */}
+                <Image src={hotel.photo} alt={hotel.name} fill sizes="220px" />
               </div>
             )}
             <div>

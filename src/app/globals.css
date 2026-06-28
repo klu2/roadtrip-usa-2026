@@ -1213,6 +1213,7 @@ footer.foot .ball {
   text-decoration: none;
 }
 .photo-strip-thumb {
+  position: relative;
   flex: 1 1 0;
   max-width: 72px;
   aspect-ratio: 1 / 1;
@@ -1363,6 +1364,7 @@ footer.foot .ball {
 .tag-nav-home { text-decoration: none; background: var(--ink); color: var(--weiss); padding: 9px 12px; border-radius: 8px; }
 .tag-nav-link.disabled { background: rgba(24, 21, 19, 0.08); color: rgba(24, 21, 19, 0.3); }
 .tag-hero {
+  position: relative;
   margin: 8px 0 16px;
   border-radius: 14px;
   overflow: hidden;
@@ -1413,6 +1415,7 @@ footer.foot .ball {
 /* ---------- Photo gallery grid (detail) ---------- */
 .photo-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 .photo-gallery-item {
+  position: relative;
   padding: 0; border: 0; cursor: pointer; background: rgba(24, 21, 19, 0.06);
   aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden;
 }

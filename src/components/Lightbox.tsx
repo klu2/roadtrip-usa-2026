@@ -23,9 +23,13 @@ export default function Lightbox() {
       const t = e.target as HTMLElement | null;
       if (!t || t.tagName !== "IMG") return;
       const img = t as HTMLImageElement;
-      if (!img.src || !img.closest(ZOOMABLE_SELECTOR)) return;
+      const zoomable = img.closest(ZOOMABLE_SELECTOR) as HTMLElement | null;
+      if (!img.src || !zoomable) return;
       e.preventDefault();
-      setSlides([{ src: img.currentSrc || img.src, alt: img.alt || "" }]);
+      // Prefer the unoptimised original: next/image renders a downscaled
+      // in-page variant, but the lightbox should show full resolution.
+      const full = zoomable.dataset.zoomSrc || img.currentSrc || img.src;
+      setSlides([{ src: full, alt: img.alt || "" }]);
       setIndex(0);
     };
     document.addEventListener("click", onClick);
