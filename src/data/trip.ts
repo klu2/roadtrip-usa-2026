@@ -390,8 +390,8 @@ export const TRIP: Trip = {
     { date: "2026-06-25", title: "Auf der Route 66 nach Tulsa", subtitle: "Oklahoma City → Tulsa", states: ["OK"], hero: "p-20260625-201638" },
     { date: "2026-06-26", title: "Weiter ins Basislager Kansas City", subtitle: "Tulsa → Independence · vor dem letzten Gruppenspiel", states: ["OK", "KS", "MO"], hero: "p-20260626-174620" },
     { date: "2026-06-27", title: "Finale in Kansas City", subtitle: "Algerien – Österreich · Arrowhead Stadium", states: ["MO"], hero: "p-20260627-233119" },
-    { date: "2026-06-28", title: "Letzte Etappe nach Texas", subtitle: "Independence → Grapevine (DFW)", states: ["MO", "KS", "OK", "TX"] },
-    { date: "2026-06-29", title: "Heimreise", subtitle: "Dallas → Houston → Toronto → Wien", states: ["TX"] },
+    { date: "2026-06-28", title: "Rückfahrt zum Flughafen Dallas", subtitle: "Independence → Grapevine (DFW)", states: ["MO", "KS", "OK", "TX"] },
+    { date: "2026-06-29", title: "Heimflug über Houston und Toronto", subtitle: "Dallas → Houston → Toronto → Wien", states: ["TX"] },
     { date: "2026-06-30", title: "Ankunft in Wien", subtitle: "Zurück in Österreich" },
   ],
 };
